@@ -1,0 +1,29 @@
+/* Colours generated from https://hover.dev/css-color-palette-generator
+based on a main colour of rebeccapurple (#663399) */
+:root { 
+    --primary: #663399;
+    --primary-content: #e6d9f2;
+    --primary-dark: #4c2673;
+    --primary-light: #7f40bf;
+
+    --secondary: #993333;
+    --secondary-content: #f2d9d9;
+    --secondary-dark: #732626;
+    --secondary-light: #bf4040;
+
+    --background: #191320;
+    --foreground: #261d30;
+    --border: #403050;
+
+    --copy: #fbfafc;
+    --copy-light: #d9cfe2;
+    --copy-lighter: #a68fbc;
+
+    --success: #339933;
+    --warning: #999933;
+    --error: #993333;
+    --success-content: #d9f2d9;
+    --warning-content: #000000;
+    --error-content: #f2d9d9;
+}
+/* fonts from googlefonts suggested by https://fontjoy.com */
