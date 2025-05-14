@@ -38,13 +38,21 @@ All features on a single HTML page using modal windows for additional informatio
 As this is just a single page website I decided not to use bootstrap and instead use flex and CSS media queries for layout.  
 
 ### Skeleton
-Wireframe mockup generated in Balsamiq. [preview]() [open pdf]()
+Wireframe mockup generated in Balsamiq. ![preview](assets/images/mp2-wireframe1.png) [Open wireframe pdf](assets/matchy-matchy.pdf)
 ### Surface
 #### Fonts &amp; Colours
 Fonts were selected with help from [fontjoy.com](https://fontjoy.com) as follows:  
-Main body / headings: Rubik   
-Copy text: Marengo  
-Impact / button text: Chango
+Usage | Font | Sample 
+---|---|---
+Main body / headings:| Rubik |![Rubik font](assets/images/dc-p2-font-rubik.png)  
+Copy text:| Molengo |![Molengo font](assets/images/dc-p2-font-molengo.png)  
+Impact / button text:| Chango |![Chango font](assets/images/dc-p2-font-chango.png)  
+
+The colour palette was generated at hover.dev based on an initial colour of rebeccapurple.
+![Colour palette](assets/images/dc-p2-colours.png)
+
+## Development
+
 ## Testing
 
 ### Manual Testing
@@ -60,3 +68,5 @@ Impact / button text: Chango
 ## Deployment
 
 ## Credits
+https://www.hover.dev/css-color-palette-generator for the colour palette ideas
+https://www.w3schools.com/ for help with localStorage (to save scores)
