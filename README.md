@@ -33,8 +33,9 @@ The full user stories along with acceptance criteria and associated tasks can be
 
 
 ### Structure
-All features on a single HTML page using modal windows for additional information (e.g. scores/instuctions)
-404 error page to direct back to main page.
+All features on a single HTML page using modal windows for additional information (e.g. scores/instuctions)  
+404 error page to direct back to main page.  
+As this is just a single page website I decided not to use bootstrap and instead use flex and CSS media queries for layout.  
 
 ### Skeleton
 Wireframe mockup generated in Balsamiq. [preview]() [open pdf]()

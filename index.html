@@ -15,23 +15,41 @@
 </head>
 
 <body>
+    <!-- content wrapper -->
     <div id="content">
         <header>
             <h1>Matchy-Matchy</h1>
             <p>A pairs matching game.</p>
         </header>
-
+        <!-- game board contains info-links, table-top, score and start/reset controls -->
         <main id="game-board">
             <div id="info-links">
                 <button id="btn-instructions" class="chango">Instructions</button>
                 <button id="btn-high-score" class="chango">High Scores</button>
             </div>
+            <!-- in-game action take place on the table-top -->
             <div id="table-top">
-Cards go here
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
             </div>
-            <div id="score" class="chango">
-                Score:<span>0</span>
+            <div id="score">
+                Current score:<span>0</span>
             </div>
+            <!-- Start button becomes a reset button once the game is in progress -->
             <div id="game-control">
                 <button id="btn-start" class="chango">Start</button>
             </div>
@@ -41,6 +59,9 @@ Cards go here
             &copy2025 S.D.Thornes
         </footer>
     </div>
+    <!-- define modal divs -->
+    <div id="modal-instructions"></div>
+    <div id="modal-scores"></div>
     <script src="assets/js/script.js"></script>
 </body>
 

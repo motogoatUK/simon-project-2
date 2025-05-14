@@ -42,19 +42,40 @@ p {
 #content {
     margin: 0 auto;
     text-align:center;
+    flex-grow: 1;
 }
 #game-board {
     background-color: lightgrey;
 }
 /* flex layout for table-top */
 #table-top {
-    background-color: mintcream;
     display: flex;
+   
+    background-color: mintcream;
+    
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+footer {
+    min-height:50px;
+    align-content:flex-end;
+}
+.card {
+    margin: 0.25em 0.15em;
+}
+#score {
+    font-size: 1.2em;
 }
 .chango {
   font-family: "Chango", sans-serif;
   font-size: 1.5em;
+}
+.card {
+    border: var(--primary-light) solid 3px;
+    border-radius: 10%;
+    height: 12vh;
+    width: 8vh;
 }
 /*
 -- Media Queries below -- 
