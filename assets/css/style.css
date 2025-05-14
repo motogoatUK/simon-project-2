@@ -1,29 +1,61 @@
 /* Colours generated from https://hover.dev/css-color-palette-generator
 based on a main colour of rebeccapurple (#663399) */
-:root { 
-    --primary: #663399;
-    --primary-content: #e6d9f2;
-    --primary-dark: #4c2673;
-    --primary-light: #7f40bf;
+:root {
+  --primary: #663399;
+  --primary-content: #e6d9f2;
+  --primary-dark: #4c2673;
+  --primary-light: #7f40bf;
 
-    --secondary: #993333;
-    --secondary-content: #f2d9d9;
-    --secondary-dark: #732626;
-    --secondary-light: #bf4040;
+  --secondary: #993333;
+  --secondary-content: #f2d9d9;
+  --secondary-dark: #732626;
+  --secondary-light: #bf4040;
 
-    --background: #191320;
-    --foreground: #261d30;
-    --border: #403050;
+  --background: #191320;
+  --foreground: #261d30;
+  --border: #403050;
 
-    --copy: #fbfafc;
-    --copy-light: #d9cfe2;
-    --copy-lighter: #a68fbc;
+  --copy: #fbfafc;
+  --copy-light: #d9cfe2;
+  --copy-lighter: #a68fbc;
 
-    --success: #339933;
-    --warning: #999933;
-    --error: #993333;
-    --success-content: #d9f2d9;
-    --warning-content: #000000;
-    --error-content: #f2d9d9;
+  --success: #339933;
+  --warning: #999933;
+  --error: #993333;
+  --success-content: #d9f2d9;
+  --warning-content: #000000;
+  --error-content: #f2d9d9;
 }
 /* fonts from googlefonts suggested by https://fontjoy.com */
+body {
+  /* Set main font with backup fonts */
+  font-family: "Rubik", "Molengo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/* set all paragraphs font to Molengo */
+p {
+  font-family: "Molengo", sans-serif;
+}
+
+#content {
+    margin: 0 auto;
+    text-align:center;
+}
+#game-board {
+    background-color: lightgrey;
+}
+/* flex layout for table-top */
+#table-top {
+    background-color: mintcream;
+    display: flex;
+    justify-content: space-evenly;
+}
+.chango {
+  font-family: "Chango", sans-serif;
+  font-size: 1.5em;
+}
+/*
+-- Media Queries below -- 
+*/

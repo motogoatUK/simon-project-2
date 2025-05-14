@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MatchyMatchy</title>
+    <title>Matchy-Matchy</title>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Molengo&family=Rubik&display=swap"
+        rel="stylesheet">
+    <!-- My stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-    
-<script src="assets/js/script.js"></script>
+    <div id="content">
+        <header>
+            <h1>Matchy-Matchy</h1>
+            <p>A pairs matching game.</p>
+        </header>
+
+        <main id="game-board">
+            <div id="info-links">
+                <button id="btn-instructions" class="chango">Instructions</button>
+                <button id="btn-high-score" class="chango">High Scores</button>
+            </div>
+            <div id="table-top">
+Cards go here
+            </div>
+            <div id="score" class="chango">
+                Score:<span>0</span>
+            </div>
+            <div id="game-control">
+                <button id="btn-start" class="chango">Start</button>
+            </div>
+        </main>
+
+        <footer>
+            &copy2025 S.D.Thornes
+        </footer>
+    </div>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

@@ -37,15 +37,19 @@ All features on a single HTML page using modal windows for additional informatio
 404 error page to direct back to main page.
 
 ### Skeleton
-Wireframe mockup
+Wireframe mockup generated in Balsamiq. [preview]() [open pdf]()
 ### Surface
-Fonts &amp; Colours
+#### Fonts &amp; Colours
+Fonts were selected with help from [fontjoy.com](https://fontjoy.com) as follows:  
+Main body / headings: Rubik   
+Copy text: Marengo  
+Impact / button text: Chango
 ## Testing
 
 ### Manual Testing
-Manual testing is used to evaluate the project and to find bugs and areas for improvement.
+*Manual testing is used to evaluate the project and to find bugs and areas for improvement.*
 ### Automated Testing
-Automated tests are written in order to maintain the functionality and detect breaking changes in the code.
+*Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*
 
 ### Bugs (eg.)
 >2025-05-12 `{this code}` - isn't working.
