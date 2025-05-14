@@ -33,6 +33,8 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  background-color: var(--background);
+  color: var(--copy-light);
 }
 /* set all paragraphs font to Molengo */
 p {
@@ -42,17 +44,17 @@ p {
 #content {
     margin: 0 auto;
     text-align:center;
-    flex-grow: 1;
+    background-color: var(--foreground);
+    color: var(--copy-light);
 }
 #game-board {
-    background-color: lightgrey;
+    background-color: var(--primary);
 }
 /* flex layout for table-top */
 #table-top {
-    display: flex;
-   
-    background-color: mintcream;
-    
+    background-color: var(--primary-dark);
+    color: var(--copy-lighter);
+    display: flex;    
     justify-content: space-evenly;
     flex-wrap: wrap;
     align-content: space-around;
@@ -71,12 +73,22 @@ footer {
   font-family: "Chango", sans-serif;
   font-size: 1.5em;
 }
+.btn-1 {
+    background-color: var(--primary-dark);
+    color: var(--primary-content);
+    border: var(--border) solid 2px;
+    border-radius: 5px;
+}
+.btn-1:hover {
+    color: var(--copy-lighter);
+}
 .card {
     border: var(--primary-light) solid 3px;
     border-radius: 10%;
     height: 12vh;
     width: 8vh;
 }
+
 /*
 -- Media Queries below -- 
 */
