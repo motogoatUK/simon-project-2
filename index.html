@@ -25,7 +25,7 @@
         <main id="game-board">
             <div id="info-links">
                 <button id="btn-instructions" class="btn-1 chango">Instructions</button>
-                <button id="btn-high-score" class="btn-1 chango">High Scores</button>
+                <button id="btn-highscore" class="btn-1 chango">High Scores</button>
             </div>
             <!-- in-game action take place on the table-top -->
             <div id="table-top">
@@ -60,8 +60,23 @@
         </footer>
     </div>
     <!-- define modal divs -->
-    <div id="modal-instructions"></div>
-    <div id="modal-scores"></div>
+    <div id="modal-instructions" class="modal">
+        <div class="modal-content">
+            <span class="close-button">X</span>
+            <h2>Instructions</h2>
+            <p> Flip a card and try to find another with the same image.
+    If it's not a match the cards will be flipped back.
+    Try to remember the image locations to make it easier to find pairs later.
+    When all pairs are found, you've won the game!</p>
+        </div>
+    </div>
+    <div id="modal-highscore" class="modal">
+        <div class="modal-content">
+            <span class="close-button">X</span>
+            <h2>High-score</h2>
+            <p>0</p>
+        </div>
+    </div>
     <script src="assets/js/script.js"></script>
 </body>
 

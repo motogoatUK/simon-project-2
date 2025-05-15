@@ -52,7 +52,9 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 ![Colour palette](assets/images/dc-p2-colours.png)
 
 ## Development
-
+1. Add basic HTML layout and styles
+1. Add in colours from palette
+1. style modal boxes. Search on stackoverflow.com for ideas on showing multiple modals.
 ## Testing
 
 ### Manual Testing
@@ -60,10 +62,12 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 ### Automated Testing
 *Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*
 
-### Bugs (eg.)
->2025-05-12 `{this code}` - isn't working.
+### Bugs
+>2025-05-15 Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.
 >##### FIX:
->Used `{that code}` instead.
+>With a bit of research on stackoverflow.com (and use of console.log messages), I gathered enough information to enable me to work out I needed to add event listeners to each close button and target the parents parent node to hide the modal. This is what I came up with: `[...btnClose].forEach(element => {
+    element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });
+});`
 
 ## Deployment
 
