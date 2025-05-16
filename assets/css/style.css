@@ -69,6 +69,9 @@ p {
 #score {
     font-size: 1.2em;
 }
+#modal-highscore p {
+ font-size:2.5em;
+}
 .chango {
   font-family: "Chango", sans-serif;
   font-size: 1.5em;
@@ -92,6 +95,10 @@ p {
     height: 23vw;
     width: 23vw;
     background: url('../images/ggi-200-cardback.jpg') no-repeat center/100%;
+    font-size:2em;
+    align-content:center;
+    cursor: pointer;
+    transition: 1s ease-in-out;
 }
 /* make sure images will match the background card */
 .card img {
@@ -125,24 +132,38 @@ footer {
     margin:20vh auto;
     width:80vw;    
     padding:15px;
+    position:relative;
 }
 /* style the close button icon */
+/* absolute positioning relative to the parent modal-content */
 .close-button {
 font-size:2em;
 font-weight:bold;
+background-color: var(--foreground);
 border: var(--primary-light) solid 2px;
 border-radius:3px;
+/* position button so it sits above the modal content box */
+margin-top:-10px;
 padding:2px 5px;
 cursor: pointer;
+position:absolute;
+right: 5px;
+top:5px;
+}
+/* class applied when card is revealed */
+.revealed {
+    background-image: none;
 }
 
 /*
 -- Media Queries below -- 
 */
-@media screen and (min-width:570px) {
+@media screen and (min-width:630px) {
 /*increase card margins a little for aesthetics */
 .card {
     margin: 0.3em;
+    max-width: 142px;
+    max-height: 142px;
 }
 /* space out top links on wider screens */
 #info-links {
@@ -150,4 +171,23 @@ cursor: pointer;
     justify-content: space-between;
     padding:2em;
 }
+}
+@media screen and (min-width:1110px) {
+    .card {
+        max-width:175px;
+        max-height:175px;
+    }
+}
+@media screen and (min-width:1296px) {
+    .card {
+        max-width:200px;
+        max-height:200px;
+    }
+}
+@media screen and (min-width:1510px) {
+    #game-board {
+        width:1500px;
+        /* center on screen as screen gets wider than game board */
+        margin:0 auto;
+    }
 }

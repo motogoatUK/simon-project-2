@@ -64,6 +64,8 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 1. Style modal boxes. Search on stackoverflow.com for ideas on showing multiple modals.
 1. Style game area. Add in responsive breakpoints.
 1. Add event listeners for Instrustions and High score button and test.
+1. Final styling for gameboard interrface and test responsiveness across different device widths.
+
 
 ## Testing
 
@@ -74,11 +76,15 @@ Testing during development using Firefox Dev Tools in responsive design mode
 *Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*  
 
 ### Bugs
->2025-05-15 Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.
+##### 2025-05-15
+> Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.
 >##### FIX:
->With a bit of research on stackoverflow.com (and use of console.log messages), I gathered enough information to enable me to work out I needed to add event listeners to each close button and target the parents parent node to hide the modal. This is what I came up with: `[...btnClose].forEach(element => {
-    element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });
-});`
+>With a bit of research on stackoverflow.com (and use of console.log messages), I gathered enough information to enable me to work out I needed to add event listeners to each close button and target the parents parent node to hide the modal. This is what I came up with:  
+`[...btnClose].forEach(element => {
+    element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });  
+});`  
+##### 2025-05-16
+> Game interface responds well to all different display widths, but only in portrait mode. when switching to landscape the game board can only display the first row / row and half  
 
 ## Deployment
 
