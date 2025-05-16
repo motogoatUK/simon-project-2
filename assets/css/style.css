@@ -26,6 +26,12 @@ based on a main colour of rebeccapurple (#663399) */
   --warning-content: #000000;
   --error-content: #f2d9d9;
 }
+/* reset CSS */
+* {
+    margin:0;
+    padding:0
+}
+
 /* fonts from googlefonts suggested by https://fontjoy.com */
 body {
   /* Set main font with backup fonts */
@@ -48,7 +54,7 @@ p {
     color: var(--copy-light);
 }
 #game-board {
-    background-color: var(--primary);
+    background-color: var(--primary);    
 }
 /* flex layout for table-top */
 #table-top {
@@ -59,14 +65,7 @@ p {
     flex-wrap: wrap;
     align-content: space-around;
 }
-footer {
-    min-height:50px;
-    align-content:flex-end;
-    margin-top:auto;
-}
-.card {
-    margin: 0.25em 0.15em;
-}
+
 #score {
     font-size: 1.2em;
 }
@@ -86,10 +85,17 @@ footer {
     background-color: var(--primary-dark);
 }
 .card {
+    margin: 0.25em auto;
     border: var(--primary-light) solid 3px;
     border-radius: 10%;
-    height: 12vh;
-    width: 8vh;
+    height: 22vw;
+    width: 22vw;
+}
+
+footer {
+    min-height:50px;
+    align-content:flex-end;
+    margin-top:auto;
 }
 /* styles for modals */
 /* Modal background. full screen and darken content */
@@ -126,3 +132,8 @@ cursor: pointer;
 /*
 -- Media Queries below -- 
 */
+@media screen and (min-width:520px) {
+.card {
+    margin: 0.3em;
+}    
+}
