@@ -52,15 +52,26 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 ![Colour palette](assets/images/dc-p2-colours.png)
 
 ## Development
+- IDE: Visual Studio Code
+- local http server: Python
+- Browser and Developer tools: Firefox
+- Version control: Github
+- Project board: Github Kanban
+- Accessibility: WebAIM.org
+
 1. Add basic HTML layout and styles
 1. Add in colours from palette
-1. style modal boxes. Search on stackoverflow.com for ideas on showing multiple modals.
+1. Style modal boxes. Search on stackoverflow.com for ideas on showing multiple modals.
+1. Style game area. Add in responsive breakpoints.
+1. Add event listeners for Instrustions and High score button and test.
+
 ## Testing
 
 ### Manual Testing
-*Manual testing is used to evaluate the project and to find bugs and areas for improvement.*
+*Manual testing is used to evaluate the project and to find bugs and areas for improvement.*  
+Testing during development using Firefox Dev Tools in responsive design mode
 ### Automated Testing
-*Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*
+*Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*  
 
 ### Bugs
 >2025-05-15 Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.

@@ -59,7 +59,7 @@ p {
 /* flex layout for table-top */
 #table-top {
     background-color: var(--primary-dark);
-    color: var(--copy-lighter);
+    color: var(--copy-light);
     display: flex;    
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -75,6 +75,7 @@ p {
 }
 .btn-1 {
     margin:3px;
+    padding:2px 10px;
     background-color: var(--secondary-dark);
     color: var(--secondary-content);
     border: var(--border) solid 2px;
@@ -88,8 +89,14 @@ p {
     margin: 0.25em auto;
     border: var(--primary-light) solid 3px;
     border-radius: 10%;
-    height: 22vw;
-    width: 22vw;
+    height: 23vw;
+    width: 23vw;
+    background: url('../images/ggi-200-cardback.jpg') no-repeat center/100%;
+}
+/* make sure images will match the background card */
+.card img {
+    width:100%;
+     border-radius: 10%;
 }
 
 footer {
@@ -132,8 +139,15 @@ cursor: pointer;
 /*
 -- Media Queries below -- 
 */
-@media screen and (min-width:520px) {
+@media screen and (min-width:570px) {
+/*increase card margins a little for aesthetics */
 .card {
     margin: 0.3em;
-}    
+}
+/* space out top links on wider screens */
+#info-links {
+    display:flex;
+    justify-content: space-between;
+    padding:2em;
+}
 }

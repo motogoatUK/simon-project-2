@@ -22,7 +22,7 @@ btnHighscore.addEventListener("click", () => {
 [...btnClose].forEach(element => {
     element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });
 });
-
+/* Also close modal if user clicks outside of content box */
 window.addEventListener("click", (e) => {
     [...modals].forEach((modal) => {
         if (e.target === modal) {
