@@ -29,42 +29,82 @@ window.addEventListener("click", (e) => {
             modal.style.display = 'none';
         }
     });
-});  
+});
 
 /* Game code starts here */
 let game = {
-    cards:[],
+    cards: [],
     score: 0,
     misses: 0,
-    turn:0,
-    cardsFlipped:[],
-    cardsMatched:[],
-} 
+    turn: 0,
+    cardsFlipped: [],
+    cardsMatched: [],
+}
 initCards();
-let cardArray=document.getElementsByClassName("card");
+let cardArray = document.getElementsByClassName("card");
 for (let card in cardArray) {
-cardArray[card].onclick = ()=>{showCard(card)};
+    cardArray[card].onclick = () => { showCard(card) };
 };
-function initCards(){
+/**
+ * Initcards - Initialises the card array
+ */
+function initCards() {
     numCards = document.getElementsByClassName("card").length;
     /* we will be adding images here, but for testing we will be using letters */
-    let cardValues="A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
+    let cardValues = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
     console.log(numCards);
-    for (let i=0; i < numCards; i++){
+    for (let i = 0; i < numCards; i++) {
         /* give 2 cards the same value */
-        game.cards[i]= cardValues.at(i);
-        game.cards[i+1] = cardValues.at(i);
+        game.cards[i] = cardValues.at(i);
+        game.cards[i + 1] = cardValues.at(i);
         /* extra i++ to skip 2 */
         i++;
     }
     console.log(game.cards);
 }
-function showCard(num){
-    thisCard=cardArray[num];
-thisCard.classList.add("revealed");
-thisCard.innerHTML=game.cards[num];
-setTimeout (() => {
-    thisCard.innerHTML=parseInt(num)+1;
-    thisCard.classList.remove("revealed");
-},1000);
+function showCard(num) {  
+
+console.log(game.cardsFlipped);
+    thisCard = cardArray[num];
+    thisCard.classList.add("revealed");
+    thisCard.innerHTML = game.cards[num];
+    /* add to cardsFlipped, push() returns the new length of array so we can check directly */
+    if (game.cardsFlipped.push(num) > 1) {
+        //We need a pause here to prevent any more cards being clicked.
+        /* check for match */        
+        checkMatch();
+    };
 }
+function checkMatch() {
+    /*There should only ever be 2 cards in cardsFlipped array. If not show an error */
+    if (game.cardsFlipped.length !== 2) {
+        console.error("More than 2 cards in flipped array!");
+    };
+    let last = game.cardsFlipped.at(-1);
+    let first = game.cardsFlipped.at(0);
+    if (game.cards[last] === game.cards[first]) {
+        /* its a match */
+        /* add score 
+            move both cards to cardsMatched
+            remove event handlers from matched cards */
+          alert("match");
+        /* else flip both cards back over */
+        hideFlipped(); // hide anyway for now
+    } else hideFlipped();
+
+};
+
+function hideFlipped() {
+    let last = game.cardsFlipped.pop();
+    let first = game.cardsFlipped.pop();
+    let lastCard = cardArray[last];
+    let firstCard = cardArray[first];
+
+    setTimeout(() => {
+        firstCard.innerHTML = parseInt(first) + 1;
+        firstCard.classList.remove("revealed");
+        lastCard.innerHTML = parseInt(last) + 1;
+        lastCard.classList.remove("revealed");
+    }, 1000);
+}
+
