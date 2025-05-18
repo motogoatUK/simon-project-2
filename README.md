@@ -85,6 +85,14 @@ Testing during development using Firefox Dev Tools in responsive design mode
 });`  
 ##### 2025-05-16
 > Game interface responds well to all different display widths, but only in portrait mode. when switching to landscape the game board can only display the first row / row and half  
+>##### FIX:
+> not fixed  
+##### 2025-05-18
+> Clicking same card twice produces a match. Changed .onclick to addEventListeners but could not get removeEventListeners to work.
+>##### FIX
+> Searching on stackoverflow.com I learned about the `{once: true}` property of addEventListener. I implemented it and it worked fantastically. 
+
+
 
 ## Deployment
 

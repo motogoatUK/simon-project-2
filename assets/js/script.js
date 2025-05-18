@@ -41,10 +41,12 @@ let game = {
     cardsMatched: [],
 }
 initCards();
-let cardArray = document.getElementsByClassName("card");
-for (let card in cardArray) {
-    cardArray[card].onclick = () => { showCard(card) };
-};
+/* event handlers for card clicks
+ using once property to prevent same card clicking */
+let cardElements = document.getElementsByClassName("card");
+[...cardElements].forEach((card,i) =>  {
+    card.addEventListener("click", () => {showCard(i)},{once: true});
+});
 /**
  * Initcards - Initialises the card array
  */
@@ -62,17 +64,23 @@ function initCards() {
     }
     console.log(game.cards);
 }
-function showCard(num) {  
 
-console.log(game.cardsFlipped);
-    thisCard = cardArray[num];
+function showCard(num) {
+    // check card id not already flipped
+    /* check cardsFlipped or just remove eventlistener when initally clicked? */
+
+    thisCard = cardElements[num];
+ //   thisCard.removeEventListener("click", () => showCard, true);
     thisCard.classList.add("revealed");
     thisCard.innerHTML = game.cards[num];
     /* add to cardsFlipped, push() returns the new length of array so we can check directly */
     if (game.cardsFlipped.push(num) > 1) {
-        //We need a pause here to prevent any more cards being clicked.
-        /* check for match */        
-        checkMatch();
+        /* We should prevent any more cards being clicked.
+        remove click handlers?
+        /* 
+        We also need a delay here (set timeout)? to give the user time to see the card before checking */
+        /* check for match */
+        setTimeout(checkMatch(), 500);
     };
 }
 function checkMatch() {
@@ -87,7 +95,7 @@ function checkMatch() {
         /* add score 
             move both cards to cardsMatched
             remove event handlers from matched cards */
-          alert("match");
+        alert("match");
         /* else flip both cards back over */
         hideFlipped(); // hide anyway for now
     } else hideFlipped();
@@ -97,8 +105,8 @@ function checkMatch() {
 function hideFlipped() {
     let last = game.cardsFlipped.pop();
     let first = game.cardsFlipped.pop();
-    let lastCard = cardArray[last];
-    let firstCard = cardArray[first];
+    let lastCard = cardElements[last];
+    let firstCard = cardElements[first];
 
     setTimeout(() => {
         firstCard.innerHTML = parseInt(first) + 1;
