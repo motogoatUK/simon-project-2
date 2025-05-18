@@ -72,6 +72,22 @@ p {
 #modal-highscore p {
  font-size:2.5em;
 }
+/* div for in-game notification set in middle of screen and transparent */
+#notification {
+    display:none;
+    position:absolute;
+    top:45vh;
+    width:100%;
+    background-color: transparent;
+    margin: 0 auto;
+    text-align: center;
+    font-size:2em;
+    /* using shadow four times to make an outline */
+    text-shadow: 1px 1px 2px var(--foreground),
+                -1px -1px 2px var(--foreground),
+                -1px 1px 2px var(--foreground),
+                1px -1px 2px var(--foreground);
+}
 .chango {
   font-family: "Chango", sans-serif;
   font-size: 1.5em;
@@ -171,12 +187,18 @@ top:5px;
     justify-content: space-between;
     padding:2em;
 }
+#notification {
+    font-size:2.5em;
+}
 }
 @media screen and (min-width:1110px) {
     .card {
         max-width:175px;
         max-height:175px;
     }
+}
+#notification {
+    font-size:3em;
 }
 @media screen and (min-width:1296px) {
     .card {

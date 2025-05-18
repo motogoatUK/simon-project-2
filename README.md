@@ -65,6 +65,13 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 1. Style game area. Add in responsive breakpoints.
 1. Add event listeners for Instrustions and High score button and test.
 1. Final styling for gameboard interrface and test responsiveness across different device widths.
+1. Create code for gameboard. Assign cards values
+1. add event listeners for card selections
+1. add code to display the cards values
+1. add code to flip cards once displayed
+1. add code to check for a match
+1. add code to prevent selecing more than 2 cards including selecting the same card twice
+1. add notification area (overlay) 
 
 
 ## Testing
