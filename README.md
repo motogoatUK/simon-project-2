@@ -71,14 +71,20 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 1. add code to flip cards once displayed
 1. add code to check for a match
 1. add code to prevent selecing more than 2 cards including selecting the same card twice
-1. add notification area (overlay) 
-
+1. add notification area (overlay)
+1. remove testing code and add startgame function.
+1. Add code to reset the game
+1. add score and highscore functions
+1. code to check for misses
+1. code to check for endgame.
 
 ## Testing
 
 ### Manual Testing
 *Manual testing is used to evaluate the project and to find bugs and areas for improvement.*  
-Testing during development using Firefox Dev Tools in responsive design mode
+Testing during development using Firefox Dev Tools in responsive design mode.
+The code was tested at each stage using Firefox with Dev tools including debugger.
+
 ### Automated Testing
 *Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*  
 

@@ -2,6 +2,8 @@
 Browser matching game
 By Simon Thornes 2025
 */
+// Define Constants
+const cardElements = document.getElementsByClassName("card");
 const modals = document.getElementsByClassName("modal");
 const btnClose = document.getElementsByClassName("close-button");
 /* get individual modals */
@@ -9,12 +11,13 @@ const modalInstructions = document.getElementById("modal-instructions");
 const modalHighscore = document.getElementById("modal-highscore");
 
 /* create event listeners for buttons */
-const btnInstructions = document.getElementById("btn-instructions");
-btnInstructions.addEventListener("click", () => {
+const btnStart = document.getElementById("btn-start");
+btnStart.addEventListener("click", controlButtonClicked);
+
+document.getElementById("btn-instructions").addEventListener("click", () => {
     modalInstructions.style.display = "block";
 });
-const btnHighscore = document.getElementById("btn-highscore");
-btnHighscore.addEventListener("click", () => {
+document.getElementById("btn-highscore").addEventListener("click", () => {
     modalHighscore.style.display = "block";
 });
 /* As there is a close button span inside each individual modal we need to use parentNode.parentNode to target the .modal element */
@@ -32,7 +35,7 @@ window.addEventListener("click", (e) => {
 });
 
 /* Game code starts here */
-let game = {
+const game = {
     cards: [],
     score: 0,
     misses: 0,
@@ -40,13 +43,23 @@ let game = {
     cardsFlipped: [],
     cardsMatched: [],
 }
-initCards();
-/* Add event handlers for card clicks
- using once property to prevent same card clicking */
-let cardElements = document.getElementsByClassName("card");
-[...cardElements].forEach((card, i) => {
-    card.addEventListener("click", () => { showCard(i) }, { once: true });
-});
+
+/** Initialises card deck then starts event listeners on the deck */
+function startGame() {
+    initCards();
+    addCardListeners() ? console.log("card listeners started") : console.log("card listener failed to start");
+    // the event listeners now handle the rest of game
+}
+
+function addCardListeners() {
+    /* Add event handlers for card clicks
+     using once property to prevent same card clicking */
+    [...cardElements].forEach((card, i) => {
+        card.addEventListener("click", () => { showCard(i) }, { once: true });
+    });
+    return true;
+}
+
 /**
  * Initcards - Initialises the card array
  */
@@ -78,14 +91,13 @@ function showCard(num) {
             /* We should prevent any more cards being clicked.
             remove click handlers?
             /* 
-            
-            We also need a delay here (set timeout)? to give the user time to see the card before checking */
-            /* check for match */
+            /* check for match
+            We need a delay here (set timeout) to give the user time to see the card before checking */
             setTimeout(() => checkMatch(), 400);
         };
     } else {
         notify("stop trying to cheat me");
-        setTimeout(cardElements[num].addEventListener("click", () => { showCard(num) }, { once: true }),200);
+        setTimeout(cardElements[num].addEventListener("click", () => { showCard(num) }, { once: true }), 200);
 
     }
 }
@@ -102,6 +114,7 @@ function checkMatch() {
             move both cards to cardsMatched
 
             announce match
+            (endgame score = score x remaining misses?)
          */
         notify("That's a match!");
         /* else flip both cards back over */
@@ -142,4 +155,15 @@ function notify(message) {
         tableTop.style.removeProperty("opacity");
     }, 1000);
 }
-
+function controlButtonClicked() {
+    if (btnStart.innerText === "Start") {
+        btnStart.innerText = "Reset Game";
+    } else {
+       // hide any cards that have been flipped
+       // remove event listeners
+        //reset data tbc
+       
+        btnStart.innerText = "Start";
+    }
+    startGame();
+}
