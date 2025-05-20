@@ -103,7 +103,11 @@ The code was tested at each stage using Firefox with Dev tools including debugge
 ##### 2025-05-18
 > Clicking same card twice produces a match. Changed .onclick to addEventListeners but could not get removeEventListeners to work.
 >##### FIX
-> Searching on stackoverflow.com I learned about the `{once: true}` property of addEventListener. I implemented it and it worked fantastically. 
+> Searching on stackoverflow.com I learned about the `{once: true}` property of addEventListener. I implemented it and it worked fantastically to prevent double clicking on the same card.
+##### 2025-05-20
+> Clicking a third selection sometimes flips the card into play even though the code was written to ignore further selections.
+>##### FIX: 
+>This turned out to be due to timing of the check match function removing cards from the flippedArray before another delay to flip the cards back over. The reason the removeEventListeners didn't work was due to the eventListeners being set up with an anonymous function (as we were passing in the index as a variable). One possible solution mentioned by Robert Thompson from Dudley College was that I might set up a game variable that I could monitor when the matches were being checked. This was the route I took and set up a boolean `inProgress` that I could check before flipping a card and set to false within the match function and then set back to true in the delayed hideFlipped function calls. 
 
 
 
@@ -111,4 +115,5 @@ The code was tested at each stage using Firefox with Dev tools including debugge
 
 ## Credits
 https://www.hover.dev/css-color-palette-generator for the colour palette ideas
-https://www.w3schools.com/ for help with localStorage (to save scores)
+https://www.w3schools.com/ for help with localStorage (to save scores)  
+Rory Patrick Sheridan for his excellent mentoring sessions.
