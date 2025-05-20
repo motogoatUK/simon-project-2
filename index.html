@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A memory matching game written in HTML, CSS and Javascript">
     <title>Matchy-Matchy</title>
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,17 +66,32 @@
         </footer>
     </div>
     <!-- add notification div instead of using alerts -->
-    <div id="notification" class="chango">Test</div>
+    <div id="notification" class="chango"></div>
     </div>
     <!-- define modal divs -->
     <div id="modal-instructions" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Instructions</h2>
-            <p> Flip a card and try to find another with the same image.
-                If it's not a match the cards will be flipped back.
-                Try to remember the image locations to make it easier to find pairs later.
-                When all pairs are found, you've won the game!</p>
+            <p> How to play matchy-matchy:</p>
+            <p>Select a card to start then try to find another matching card with the same image.<br>
+                If it's not a match both of the cards will be flipped back over.<br>
+                Can you remember what they were? Try selecting a different card - does it match up with any that you
+                have seen before?<br>
+                Can you remember the location of the matching card? If you remember (or guess) correctly - that's a
+                match. Matching cards<br>
+                are removed from the board. Match all the pairs to win.</p>
+            <p>
+                <!-- <p>[Miss-Match: A miss-match occurs when you flip a card that you have already seen in the game, but you then fail to make a matching pair.] -->
+                There is a limit of 6 misses (for 16 cards). If you reach this number of miss-matches before finding all
+                pairs, the game ends.
+            </p>
+            <p>
+                Your score is calculated by how many pairs of cards you have found. <br>
+                <!-- [If you win the game your score is multiplied by how many miss-matches you have left.] -->
+                Your high score is also saved for your next visit!</p>
+            <p>
+                Hit the Start Button to begin and select your first card!</p>
         </div>
     </div>
     <div id="modal-highscore" class="modal">
