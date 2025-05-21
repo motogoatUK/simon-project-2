@@ -39,7 +39,7 @@ const game = {
     cards: [],
     score: 0,
     misses: 0,
-    turn: 0,
+    turn: "",
     inProgress: false,
     cardsFlipped: [],
     cardsMatched: [],
@@ -48,19 +48,23 @@ modalInstructions.style.display = "block";
 /** Initialises card deck then starts event listeners on the deck */
 function startGame() {
     initCards();
-    addCardListeners() ? console.log("card listeners started") : console.log("card listener failed to start");
-    game.inProgress = true;
-    // the event listeners now handle the rest of game
+    addCardListeners() ? game.inProgress = true : console.error("card listener failed to start");
+    // the event listeners now handle the rest of game.
 }
 
 function addCardListeners() {
     /* Add event handlers for card clicks
      using once property to prevent same card clicking */
-    [...cardElements].forEach((card, i) => {
-        card.addEventListener("click", () => showCard(i), { once: true });
-    });
-    return true;
-}
+    try {
+        [...cardElements].forEach((card, i) => {
+            card.addEventListener("click", () => showCard(i), { once: true });
+        });
+        return true;
+    } catch (err) {
+        console.log(err.message);
+        return false;
+    };
+};
 
 /**
  * Initcards - Initialises the card array
@@ -116,11 +120,13 @@ function checkMatch() {
             announce match
             (endgame score = score x remaining misses?)
          */
-        game.cardsMatched = [...game.cardsFlipped];
+        game.cardsMatched.push(last);
+        game.cardsMatched.push(first);
+        game.turn = "match";
         console.log(game.cardsMatched, game.cardsFlipped);
         notify("That's a match!");
         /* flip both cards back over */
-    }; 
+    };
     hideFlipped(); // matched cards will be removed by this function.
 
 };
@@ -136,17 +142,27 @@ function hideFlipped() {
         for (let i = 0; i < numFlipped; i++) {
 
             let last = game.cardsFlipped.pop(); //remove from flipped array
-            let lastCard = cardElements[last]; // get the relevant HTML element 
-            setTimeout(() => {
-                lastCard.innerHTML = parseInt(last) + 1; // add 1 as cards are numbered 1-16 and array is 0-15
-                lastCard.classList.remove("revealed"); // remove revealed class
-                game.inProgress = true;
-                lastCard.addEventListener("click", () => { showCard(last) }, { once: true });// add back the event listener
-            }, 1000);
+            let lastCard = cardElements[last]; // get the relevant HTML element
+            if (game.turn === "match") {
+                hideMatched(lastCard, last);
+            } else {
+                setTimeout(() => {
+                    lastCard.innerHTML = parseInt(last) + 1; // add 1 as cards are numbered 1-16 and array is 0-15
+                    lastCard.classList.remove("revealed"); // remove revealed class
+                    lastCard.addEventListener("click", () => { showCard(last) }, { once: true });// add back the event listener
+                }, 1000);
+            };
         };
+        //once loop has finished allow next selection
+        setTimeout(() => {
+            game.inProgress = true;
+            game.turn = "";
+        }, 1000);
     };
 };
-
+function hideMatched(element, num) {
+    element.style.display = "none";
+};
 function notify(message) {
     const element = document.getElementById("notification");
     const tableTop = document.getElementById("table-top");
