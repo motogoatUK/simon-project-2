@@ -59,13 +59,13 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 - Project board: Github Kanban
 - Accessibility: WebAIM.org
 
-1. Add basic HTML layout and styles
-1. Add in colours from palette
-1. Style modal boxes. Search on stackoverflow.com for ideas on showing multiple modals.
-1. Style game area. Add in responsive breakpoints.
-1. Add event listeners for Instrustions and High score button and test.
-1. Final styling for gameboard interrface and test responsiveness across different device widths.
-1. Create code for gameboard. Assign cards values
+1. add basic HTML layout and styles
+1. add in colours from palette
+1. style modal boxes. Search on stackoverflow.com for ideas on showing multiple modals.
+1. style game area. Add in responsive breakpoints.
+1. add event listeners for Instructions and High score button and test.
+1. final styling for gameboard interrface and test responsiveness across different device widths.
+1. create code for gameboard. Assign cards values
 1. add event listeners for card selections
 1. add code to display the cards values
 1. add code to flip cards once displayed
@@ -73,20 +73,27 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 1. add code to prevent selecing more than 2 cards including selecting the same card twice
 1. add notification area (overlay)
 1. remove testing code and add startgame function.
-1. Add code to reset the game
+1. add code to reset the game
 1. add score and highscore functions
 1. code to check for misses
 1. code to check for endgame.
 
 ## Testing
 
+This project uses manual testing procedures only but automated testing is discussed below.
+
 ### Manual Testing
 *Manual testing is used to evaluate the project and to find bugs and areas for improvement.*  
+This includes human interaction and visual checks.  
 Testing during development using Firefox Dev Tools in responsive design mode.
 The code was tested at each stage using Firefox with Dev tools including debugger.
 
 ### Automated Testing
 *Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*  
+Tests are written to expect a certain result based on inputs. These are mainly for coding routines but can also be used to check for changes in the DOM. they can't be used for visual styling
+
+#### Summary
+Development requires a mix of both manual and automated testing routines for the best outcome. Manual testing is more time-consuming so thought must be given to use automated testing where possible.
 
 ### Bugs
 ##### 2025-05-15
@@ -114,6 +121,8 @@ The code was tested at each stage using Firefox with Dev tools including debugge
 ## Deployment
 
 ## Credits
-https://www.hover.dev/css-color-palette-generator for the colour palette ideas
-https://www.w3schools.com/ for help with localStorage (to save scores)  
-Rory Patrick Sheridan for his excellent mentoring sessions.
+https://www.hover.dev/css-color-palette-generator for the colour palette ideas  
+https://www.w3schools.com/ for help with localStorage (to save scores) among many other things  
+[stackoverflow.com](https://stackoverflow.com/questions) for seeing interesting different ways to accomplish the same goal.  
+Rory Patrick Sheridan (Code Institute) for his excellent mentoring sessions.  
+Robert Thompson (Dudley College) for invaluable guidance
