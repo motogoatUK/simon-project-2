@@ -44,7 +44,7 @@ const game = {
     cardsFlipped: [],
     cardsMatched: [],
 }
-
+modalInstructions.style.display = "block";
 /** Initialises card deck then starts event listeners on the deck */
 function startGame() {
     initCards();
@@ -112,14 +112,16 @@ function checkMatch() {
         /* its a match */
         /* add score 
             move both cards to cardsMatched
-
+            
             announce match
             (endgame score = score x remaining misses?)
          */
+        game.cardsMatched = [...game.cardsFlipped];
+        console.log(game.cardsMatched, game.cardsFlipped);
         notify("That's a match!");
-        /* else flip both cards back over */
-        hideFlipped(); // hide anyway for now
-    } else hideFlipped();
+        /* flip both cards back over */
+    }; 
+    hideFlipped(); // matched cards will be removed by this function.
 
 };
 
@@ -160,11 +162,10 @@ function controlButtonClicked() {
     if (btnStart.innerText === "Start") {
         btnStart.innerText = "Reset Game";
     } else {
-        // hide any cards that have been flipped
-        // remove event listeners
-        //reset data tbc
-
-        btnStart.innerText = "Start";
+        // go through a whole routine to re flip any flipped cards, 
+        // reset score and other game variables, reset eventListeners,
+        //  bring back matched cards. The simplest way is to reload the page....
+        document.location = "/";
     };
     startGame();
 };
