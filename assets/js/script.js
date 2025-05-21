@@ -117,28 +117,25 @@ function checkMatch() {
     let last = game.cardsFlipped.at(-1);
     let first = game.cardsFlipped.at(0);
     if (game.cards[last] === game.cards[first]) {
-        /* its a match */
-        /* add score */
+        /* its a match! Add to score */
         addScore(1);
-        /*    announce match
+        /*   
             (endgame score = score x remaining misses?)
          */
-        // move both cards to cardsMatched array
+        // move both cards to cardsMatched array and announce match
         game.cardsMatched.push(last);
         game.cardsMatched.push(first);
         game.turn = "match"; // used in hideFlipped function to denote cards to be removed from play
         // console.log(game.cardsMatched, game.cardsFlipped);
         notify("That's a match!");
     };
-    /* flip both cards back over */
-    hideFlipped(); // matched cards will be removed by this function.
-
+    // Check for endgame
+    game.cardsMatched.length === game.cards.length ? endGame() : hideFlipped(); // matched cards will also be removed by hideFlipped function.
 };
 /** Flips cards back over or hides them depending on if they are matched or not */
 function hideFlipped() {
     /* There should only ever be at most 2 cards in cardsFlipped array */
-    /* As this function will run any number of flips even if only 1 card is showing
-     (as sometimes in the case of a reset game), we will check and log an error if there are more than 2 */
+    /* As this function will run any number of flips, we will check and log an error if there are more than 2 */
     let numFlipped = game.cardsFlipped.length;
     if (numFlipped > 2) {
         console.error("More than 2 cards in flipped array!");
@@ -191,7 +188,7 @@ function controlButtonClicked() {
         // go through a whole routine to re flip any flipped cards, 
         // reset score and other game variables, reset eventListeners,
         //  bring back matched cards. The simplest way is to reload the page....
-        document.location = "/";
+        document.location = "index.html";
     };
     startGame();
 };
@@ -199,4 +196,9 @@ function controlButtonClicked() {
 function addScore(num) {
     game.score += num;
     document.querySelector("#score span").innerText = game.score;
+};
+function endGame() {
+    notify("Well done!");
+    document.getElementById("score").firstChild.nodeValue = "Final Score:";
+    //Check score against high score tbc
 };
