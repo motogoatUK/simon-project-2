@@ -161,7 +161,11 @@ function hideFlipped() {
     };
 };
 function hideMatched(element, num) {
-    element.style.display = "none";
+    // remove the matched card from the game board.
+    // display = "none" will remove the element from the page layout
+    // opacity:0 will keep the layout and make it invisible but not to screen readers
+    // visibility:hidden will hide the element and still keep it in the layout
+    element.style.visibility="hidden";
 };
 function notify(message) {
     const element = document.getElementById("notification");
