@@ -45,16 +45,15 @@ const game = {
     cardsMatched: [],
 }
 modalInstructions.style.display = "block";
-/** Initialises card deck then starts event listeners on the deck */
+/** *Initialises card deck then starts event listeners on the deck */
 function startGame() {
     initCards();
     addCardListeners() ? game.inProgress = true : console.error("card listener failed to start");
     // the event listeners now handle the rest of game.
 }
 
+/** Add event handlers for card clicks using once property to prevent same card clicking */
 function addCardListeners() {
-    /* Add event handlers for card clicks
-     using once property to prevent same card clicking */
     try {
         [...cardElements].forEach((card, i) => {
             card.addEventListener("click", () => showCard(i), { once: true });
@@ -114,23 +113,23 @@ function checkMatch() {
     let first = game.cardsFlipped.at(0);
     if (game.cards[last] === game.cards[first]) {
         /* its a match */
-        /* add score 
-            move both cards to cardsMatched
-            
-            announce match
+        /* add score */
+        addScore(1);
+        /*    announce match
             (endgame score = score x remaining misses?)
          */
+        // move both cards to cardsMatched array
         game.cardsMatched.push(last);
         game.cardsMatched.push(first);
-        game.turn = "match";
-        console.log(game.cardsMatched, game.cardsFlipped);
+        game.turn = "match"; // used in hideFlipped function to denote cards to be removed from play
+        // console.log(game.cardsMatched, game.cardsFlipped);
         notify("That's a match!");
-        /* flip both cards back over */
     };
+    /* flip both cards back over */
     hideFlipped(); // matched cards will be removed by this function.
 
 };
-
+/** Flips cards back over or hides them depending on if they are matched or not */
 function hideFlipped() {
     /* There should only ever be at most 2 cards in cardsFlipped array */
     /* As this function will run any number of flips even if only 1 card is showing
@@ -165,8 +164,9 @@ function hideMatched(element, num) {
     // display = "none" will remove the element from the page layout
     // opacity:0 will keep the layout and make it invisible but not to screen readers
     // visibility:hidden will hide the element and still keep it in the layout
-    element.style.visibility="hidden";
+    element.style.visibility = "hidden";
 };
+/** displays a large message in the middle of the gameboard for a short period */
 function notify(message) {
     const element = document.getElementById("notification");
     const tableTop = document.getElementById("table-top");
@@ -178,6 +178,7 @@ function notify(message) {
         tableTop.style.removeProperty("opacity");
     }, 1000);
 };
+/** Handles the response to the clicking of the start/reset button */
 function controlButtonClicked() {
     if (btnStart.innerText === "Start") {
         btnStart.innerText = "Reset Game";
@@ -188,4 +189,9 @@ function controlButtonClicked() {
         document.location = "/";
     };
     startGame();
+};
+/** Adds num to score and updates display */
+function addScore(num) {
+    game.score += num;
+    document.querySelector("#score span").innerText = game.score;
 };
