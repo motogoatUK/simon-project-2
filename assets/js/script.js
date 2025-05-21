@@ -45,10 +45,15 @@ const game = {
     cardsMatched: [],
 }
 modalInstructions.style.display = "block";
+document.getElementById("table-top").style.opacity = 0.4;
+document.getElementById("notification").style.display = "block";
+
 /** *Initialises card deck then starts event listeners on the deck */
 function startGame() {
     initCards();
     addCardListeners() ? game.inProgress = true : console.error("card listener failed to start");
+    document.getElementById("table-top").style.opacity = 1;
+    document.getElementById("notification").style.removeProperty("display");
     // the event listeners now handle the rest of game.
 }
 

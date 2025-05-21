@@ -74,7 +74,7 @@ p {
 }
 /* div for in-game notification set in middle of screen and transparent */
 #notification {
-    display:none;
+    display:none; /* default hidden */
     position:absolute;
     top:45vh;
     width:100%;
