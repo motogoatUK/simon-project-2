@@ -6,45 +6,34 @@ By Simon Thornes 2025
 const cardElements = document.getElementsByClassName("card");
 const modals = document.getElementsByClassName("modal");
 const btnClose = document.getElementsByClassName("close-button");
+const btnStart = document.getElementById("btn-start");
+
 /* get individual modals */
 const modalInstructions = document.getElementById("modal-instructions");
 const modalHighscore = document.getElementById("modal-highscore");
 
-/* create event listeners for buttons */
-const btnStart = document.getElementById("btn-start");
-btnStart.addEventListener("click", controlButtonClicked);
-
-document.getElementById("btn-instructions").addEventListener("click", () => {
-    modalInstructions.style.display = "block";
-});
-document.getElementById("btn-highscore").addEventListener("click", () => {
-    modalHighscore.style.display = "block";
-});
-/* As there is a close button span inside each individual modal we need to use parentNode.parentNode to target the .modal element */
-/* Credit to w3schools.com for information on array spread [...] */
-[...btnClose].forEach(element => {
-    element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });
-});
-/* Also close modal if user clicks outside of content box */
-window.addEventListener("click", (e) => {
-    [...modals].forEach((modal) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-});
+/* check for local storage */
+let gameStorage = false;
+if (typeof(Storage) !== "undefined") {
+    gameStorage = true;
+};
 
 /* Game code starts here */
+addButtonListeners(); /* create event listeners for buttons */
 const game = {
     cards: [],
     score: 0,
+    highScore: 0,
     misses: 0,
     turn: "",
     inProgress: false,
     cardsFlipped: [],
     cardsMatched: [],
 }
-modalInstructions.style.display = "block";
+/* get highScore from storage if available */
+if (gameStorage) { game.highScore = localStorage.getItem("highscore")};
+modalInstructions.style.display = "block"; // show Instructions
+/* Set initial opacity on tabletop and display initial message */
 document.getElementById("table-top").style.opacity = 0.4;
 document.getElementById("notification").style.display = "block";
 
@@ -55,7 +44,30 @@ function startGame() {
     document.getElementById("table-top").style.opacity = 1;
     document.getElementById("notification").style.removeProperty("display");
     // the event listeners now handle the rest of game.
-}
+};
+/** Adds event listeners for the apps buttons */
+function addButtonListeners(){
+    btnStart.addEventListener("click", controlButtonClicked);
+    document.getElementById("btn-instructions").addEventListener("click", () => {
+        modalInstructions.style.display = "block";
+    });
+    document.getElementById("btn-highscore").addEventListener("click", () => {
+        modalHighscore.style.display = "block";
+    });
+    /* As there is a close button span inside each individual modal we need to use parentNode.parentNode to target the .modal element */
+    /* Credit to w3schools.com for information on array spread [...] */
+    [...btnClose].forEach(element => {
+        element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });
+    });
+    /* Also close modal if user clicks outside of content box */
+    window.addEventListener("click", (e) => {
+        [...modals].forEach((modal) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+};
 
 /** Add event handlers for card clicks using once property to prevent same card clicking */
 function addCardListeners() {
