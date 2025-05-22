@@ -137,9 +137,10 @@ Development requires a mix of both manual and automated testing routines for the
 >This turned out to be due to timing of the check match function removing cards from the flippedArray before another delay to flip the cards back over. The reason the removeEventListeners didn't work was due to the eventListeners being set up with an anonymous function (as we were passing in the index as a variable). One possible solution mentioned by Robert Thompson from Dudley College was that I might set up a game variable that I could monitor when the matches were being checked. This was the route I took and set up a boolean `inProgress` that I could check before flipping a card and set to false within the match function and then set back to true in the delayed hideFlipped function calls. 
 ##### 2025-05-22
 > Using localStorage to save the highscore isn't working (it doesn't store it)
->code: `if (gameStorage) { localStorage.setItem("highScore", game.score)}` `gameStorage` is showing as `true` at that point in debugger.
+>code: `if (gameStorage) { localStorage.setItem("highScore", game.score)};` `gameStorage` is showing as `true` at that point in debugger.
 >##### FIX:
->
+>I read this on MDN web docs: "`Storage` only supports storing and retrieving strings. If you want to save other data types, you have to convert them to strings." On checking game.score is a number so the code is now: `if (gameStorage) { localStorage.setItem("highScore", game.score.toString())};`
+When that still didn't work, I looked at the code again and found I was setting it with **highScore** but when reading it I was using **highscore**! Set both to *highscore* and it works.
 
 
 ## Deployment

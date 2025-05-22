@@ -33,7 +33,7 @@ const game = {
 /* get highScore from storage if available */
 if (gameStorage) {
     let highScore = localStorage.getItem("highscore");
-    if (highScore !== null) {game.highScore = highScore};
+    if (highScore !== null) {game.highScore = parseInt(highScore);};
 };
 modalHighscore.getElementsByTagName("p")[0].innerText=game.highScore; // set highScore in modal
 modalInstructions.style.display = "block"; // show Instructions
@@ -222,6 +222,6 @@ function endGame() {
     }
     if (game.score > game.highScore) {
         notify("New High Score!");
-        if (gameStorage) { localStorage.setItem("highScore", game.score)}
+        if (gameStorage) { localStorage.setItem("highscore", game.score.toString())}
     }
 };
