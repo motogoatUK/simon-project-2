@@ -8,7 +8,7 @@ Link to project board (Kanban): https://github.com/users/motogoatUK/projects/5
 ### Strategy
 To create a memory game for casual gamers and other users to play and help improve memory skills. 
 #### User goals:
-The full user stories along with acceptance criteria and associated tasks can be found in the project board linked [here](https://github.com/users/motogoatUK/projects/5) and above. Below is a short summary of these goals:
+The full user stories along with acceptance criteria and associated tasks can be found in this [project board](https://github.com/users/motogoatUK/projects/5) linked here and above. Below is a short summary of these goals:
  - Visitor requires responsive layout
  - Player wants a clean game interface
  - Gamer wants to play the game
@@ -38,18 +38,18 @@ All features on a single HTML page using modal windows for additional informatio
 As this is just a single page website I decided not to use bootstrap and instead use flex and CSS media queries for layout.  
 
 ### Skeleton
-Wireframe mockup generated in Balsamiq. ![preview](assets/images/mp2-wireframe1.png) [Open wireframe pdf](assets/matchy-matchy.pdf)
+Wireframe mockup generated in Balsamiq. ![preview](assets/readme-files/mp2-wireframe1.png) [Open wireframe pdf](assets/readme-files/matchy-matchy.pdf)
 ### Surface
 #### Fonts &amp; Colours
 Fonts were selected with help from [fontjoy.com](https://fontjoy.com) as follows:  
 Usage | Font | Sample 
 ---|---|---
-Main body / headings:| Rubik |![Rubik font](assets/images/dc-p2-font-rubik.png)  
-Copy text:| Molengo |![Molengo font](assets/images/dc-p2-font-molengo.png)  
-Impact / button text:| Chango |![Chango font](assets/images/dc-p2-font-chango.png)  
+Main body / headings:| Rubik |![Rubik font](assets/readme-files/dc-p2-font-rubik.png)  
+Copy text:| Molengo |![Molengo font](assets/readme-files/dc-p2-font-molengo.png)  
+Impact / button text:| Chango |![Chango font](assets/readme-files/dc-p2-font-chango.png)  
 
 The colour palette was generated at hover.dev based on an initial colour of rebeccapurple.
-![Colour palette](assets/images/dc-p2-colours.png)
+![Colour palette](assets/readme-files/dc-p2-colours.png)
 
 ## Development
 - IDE: Visual Studio Code
@@ -77,6 +77,8 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 1. add score and highscore functions
 1. code to check for endgame
 1. code to check for misses
+1. add shuffle function
+1. replace letters with images on card faces
 
 
 ## Testing
