@@ -31,7 +31,11 @@ const game = {
     cardsMatched: [],
 }
 /* get highScore from storage if available */
-if (gameStorage) { game.highScore = localStorage.getItem("highscore")};
+if (gameStorage) {
+    let highScore = localStorage.getItem("highscore");
+    if (highScore !== null) {game.highScore = highScore};
+};
+modalHighscore.getElementsByTagName("p")[0].innerText=game.highScore; // set highScore in modal
 modalInstructions.style.display = "block"; // show Instructions
 /* Set initial opacity on tabletop and display initial message */
 document.getElementById("table-top").style.opacity = 0.4;
@@ -212,5 +216,12 @@ function addScore(num) {
 function endGame() {
     notify("Well done!");
     document.getElementById("score").firstChild.nodeValue = "Final Score:";
-    //Check score against high score tbc
+    //Check score against high score
+    if (game.score === game.highScore) {
+        notify("equal Highscore!");
+    }
+    if (game.score > game.highScore) {
+        notify("New High Score!");
+        if (gameStorage) { localStorage.setItem("highScore", game.score)}
+    }
 };
