@@ -204,7 +204,7 @@ function controlButtonClicked() {
         // go through a whole routine to re flip any flipped cards, 
         // reset score and other game variables, reset eventListeners,
         //  bring back matched cards. The simplest way is to reload the page....
-        document.location = "index.html";
+        document.location.reload();
     };
     startGame();
 };

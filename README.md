@@ -135,7 +135,11 @@ Development requires a mix of both manual and automated testing routines for the
 > Clicking a third selection sometimes flips the card into play even though the code was written to ignore further selections.
 >##### FIX: 
 >This turned out to be due to timing of the check match function removing cards from the flippedArray before another delay to flip the cards back over. The reason the removeEventListeners didn't work was due to the eventListeners being set up with an anonymous function (as we were passing in the index as a variable). One possible solution mentioned by Robert Thompson from Dudley College was that I might set up a game variable that I could monitor when the matches were being checked. This was the route I took and set up a boolean `inProgress` that I could check before flipping a card and set to false within the match function and then set back to true in the delayed hideFlipped function calls. 
-
+##### 2025-05-22
+> Using localStorage to save the highscore isn't working (it doesn't store it)
+>code: `if (gameStorage) { localStorage.setItem("highScore", game.score)}` `gameStorage` is showing as `true` at that point in debugger.
+>##### FIX:
+>
 
 
 ## Deployment
