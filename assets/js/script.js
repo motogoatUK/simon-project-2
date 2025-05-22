@@ -14,7 +14,7 @@ const modalHighscore = document.getElementById("modal-highscore");
 
 /* check for local storage */
 let gameStorage = false;
-if (typeof(Storage) !== "undefined") {
+if (typeof (Storage) !== "undefined") {
     gameStorage = true;
 };
 
@@ -33,9 +33,9 @@ const game = {
 /* get highScore from storage if available */
 if (gameStorage) {
     let highScore = localStorage.getItem("highscore");
-    if (highScore !== null) {game.highScore = parseInt(highScore);};
+    if (highScore !== null) { game.highScore = parseInt(highScore); };
 };
-modalHighscore.getElementsByTagName("p")[0].innerText=game.highScore; // set highScore in modal
+modalHighscore.getElementsByTagName("p")[0].innerText = game.highScore; // set highScore in modal
 modalInstructions.style.display = "block"; // show Instructions
 /* Set initial opacity on tabletop and display initial message */
 document.getElementById("table-top").style.opacity = 0.4;
@@ -45,12 +45,13 @@ document.getElementById("notification").style.display = "block";
 function startGame() {
     initCards();
     addCardListeners() ? game.inProgress = true : console.error("card listener failed to start");
+    document.getElementById("score").style.display = "block";
     document.getElementById("table-top").style.opacity = 1;
     document.getElementById("notification").style.removeProperty("display");
     // the event listeners now handle the rest of game.
 };
 /** Adds event listeners for the apps buttons */
-function addButtonListeners(){
+function addButtonListeners() {
     btnStart.addEventListener("click", controlButtonClicked);
     document.getElementById("btn-instructions").addEventListener("click", () => {
         modalInstructions.style.display = "block";
@@ -218,10 +219,16 @@ function endGame() {
     document.getElementById("score").firstChild.nodeValue = "Final Score:";
     //Check score against high score
     if (game.score === game.highScore) {
-        notify("equal Highscore!");
+        notify("Equal Highscore!");
     }
     if (game.score > game.highScore) {
         notify("New High Score!");
-        if (gameStorage) { localStorage.setItem("highscore", game.score.toString())}
+        if (gameStorage) { localStorage.setItem("highscore", game.score.toString()) }
     }
+    /* delay setting opacity on gameboard to allow for notify messages to show
+    as the notify function clears the opacity style */
+    setTimeout(() => {
+        document.getElementById("table-top").style.opacity = "0.4";
+        document.getElementById("notification").style.display = "block"; // show last message until reset
+    }, 1200);
 };
