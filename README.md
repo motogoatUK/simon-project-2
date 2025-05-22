@@ -75,22 +75,42 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 1. remove testing code and add startgame function.
 1. add code to reset the game
 1. add score and highscore functions
+1. code to check for endgame
 1. code to check for misses
-1. code to check for endgame.
+
 
 ## Testing
 
 This project uses manual testing procedures only but automated testing is discussed below.
 
+##### Testing procedures 
+| Test | outcome | Pass/Fail 
+|---|---|---
+|Instructions should be displayed when the app is loaded.| | Not Tested
+| It should be apparent that the Start button should be pressed.| | Not Tested
+| selecting any card at this point should have no effect |  | Not Tested
+| when the user clicks Start the game should start accepting selections | | Not Tested
+| when the start button is pressed it should become a reset game button | | Not Tested
+| when the reset game button is pressed the game should be reloaded | | Not Tested
+| when a card is selected it should flip over to show the face | | Not Tested
+| once a second card is selected, trying to select a third card should display a message | | Not Tested
+| showing 2 matching faces should increase the score | | Not Tested
+| showing 2 matching faces should nofity the user of a match | | Not Tested
+| after a match both cards should disappear from the board | | Not Tested
+| After a non-match both cards should flip back over and remain in play | | Not Tested
+| After all cards are matched, a congratulatory message should be shown | | Not Tested
+| After all cards are matched, the final score should be shown | | Not Tested  
+
+
 ### Manual Testing
 *Manual testing is used to evaluate the project and to find bugs and areas for improvement.*  
-This includes human interaction and visual checks.  
-Testing during development using Firefox Dev Tools in responsive design mode.
-The code was tested at each stage using Firefox with Dev tools including debugger.
+This includes human interaction and visual checks. It test the application from a users perspective. 
+Testing during this application's development was done using Firefox Dev Tools in responsive design mode.
+The code was tested at each stage using Firefox with Dev tools including debugger.  
 
 ### Automated Testing
 *Automated tests are written in order to maintain the functionality and detect breaking changes in the code.*  
-Tests are written to expect a certain result based on inputs. These are mainly for coding routines but can also be used to check for changes in the DOM. they can't be used for visual styling
+Tests are written to expect a certain result based on inputs. These are mainly for coding routines but can also be used to check for changes in the DOM. they can't be used for visual styling.
 
 #### Summary
 Development requires a mix of both manual and automated testing routines for the best outcome. Manual testing is more time-consuming so thought must be given to use automated testing where possible.
