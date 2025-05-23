@@ -100,8 +100,12 @@ This project uses manual testing procedures only but automated testing is discus
 | showing 2 matching faces should nofity the user of a match | | Not Tested
 | after a match both cards should disappear from the board | | Not Tested
 | After a non-match both cards should flip back over and remain in play | | Not Tested
-| After all cards are matched, a congratulatory message should be shown | | Not Tested
+| If a card that has previously been shown is not matched, message should be displayed and 1 life removed.| | Not Tested  
+| If a missed match is shown 6 times the game should end immediately with a message shown | | Not Tested  
+| After all cards are matched, a congratulatory message should be shown | | Not Tested  
 | After all cards are matched, the final score should be shown | | Not Tested  
+| If a highscore is attained a message should show this. The High score should be updated | | Not Tested |
+| When the game is over, clicking any any remaing cards should have no effect | | OK 
 
 
 ### Manual Testing

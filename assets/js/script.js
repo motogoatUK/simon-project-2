@@ -30,7 +30,7 @@ const game = {
     cardsFlipped: [],
     cardsMatched: [],
     seenCards: [],
-}
+};
 /* get highScore from storage if available */
 if (gameStorage) {
     let highScore = localStorage.getItem("highscore");
@@ -55,6 +55,7 @@ function startGame() {
     }
     // the event listeners now handle the rest of game.
 };
+
 /** Adds event listeners for the apps buttons */
 function addButtonListeners() {
     btnStart.addEventListener("click", controlButtonClicked);
@@ -107,9 +108,17 @@ function initCards() {
         /* extra i++ to skip 2 */
         i++;
     };
-    console.log(game.cards);
+    console.log(game.cards);    
+    shuffleArray(game.cards);    
 };
 
+/** Implemented from https://en.wikipedia.org/wiki/Fisher-Yates_shuffle */
+function shuffleArray(array) {
+    for (let i = array.length - 1; i >= 1; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+};
 function showCard(num) {
     if (game.turn === "end") return; // If game is at end stage then skip this
     /* check if game is ready for selection - if not then ignore the last click and re add eventlistener for it */
