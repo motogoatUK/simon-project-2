@@ -24,7 +24,7 @@ const game = {
     cards: [],
     score: 0,
     highScore: 0,
-    misses: 6,
+    lives: 6,
     turn: "",
     inProgress: false,
     cardsFlipped: [],
@@ -107,6 +107,7 @@ function initCards() {
 };
 
 function showCard(num) {
+    if (game.turn === "end") return; // If game is at end stage then skip this
     /* check if game is ready for selection - if not then ignore the last click and re add eventlistener for it */
     if (game.inProgress) {
 
@@ -139,9 +140,8 @@ function checkMatch() {
     let first = game.cardsFlipped.at(0);
     if (game.cards[last] === game.cards[first]) {
         /* its a match! Add to score */
-        addScore(1);
-        /* (endgame score = score x remaining misses?)
-         or addScore by remaining misses?*/
+        addScore(game.lives);
+        // addScore by remaining lives?*/
         // move both cards to cardsMatched array and announce match
         game.cardsMatched.push(last);
         game.cardsMatched.push(first);
@@ -158,14 +158,16 @@ function checkMissed(card0, card1) {
     let seenCards = game.seenCards;
     // .includes() is ES7 .find() is ES6
     if (seenCards.includes(card0) || seenCards.includes(card1)) {
-        game.misses--;
-        let msg = String(game.misses);
-        if (game.misses < 2){ msg = "only " + msg;}
+        game.lives--;
+        let msg = String(game.lives);
+        if (game.lives < 2) { msg = "only " + msg; }
         notify(`Match missed! ${msg} left`);
-        if (game.misses === 0) {
+        if (game.lives === 0) {
             endGame();
-        }
-    }
+            game.turn = "end";
+            return; // return to previous routine
+        };
+    };
     // add both cards to seenCards array
     game.seenCards.push(card0);
     game.seenCards.push(card1);
@@ -178,6 +180,7 @@ function hideFlipped() {
     if (numFlipped > 2) {
         console.error("More than 2 cards in flipped array!");
     } else {
+        if (game.turn === "end") return; // If game is at end stage then skip this
         for (let i = 0; i < numFlipped; i++) {
 
             let last = game.cardsFlipped.pop(); //remove from flipped array
