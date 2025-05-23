@@ -24,11 +24,12 @@ const game = {
     cards: [],
     score: 0,
     highScore: 0,
-    misses: 0,
+    misses: 6,
     turn: "",
     inProgress: false,
     cardsFlipped: [],
     cardsMatched: [],
+    seenCards: [],
 }
 /* get highScore from storage if available */
 if (gameStorage) {
@@ -126,28 +127,48 @@ function showCard(num) {
 
     };
 };
+/** Checks for matched pair and increases score then checks for endgame else it 
+ * checks for misses then hands over to hideFlipped function
+ */
 function checkMatch() {
     /*There should only ever be 2 cards in cardsFlipped array. If not show an error */
     if (game.cardsFlipped.length !== 2) {
         console.error("More than 2 cards in flipped array!");
     };
-    let last = game.cardsFlipped.at(-1);
+    let last = game.cardsFlipped.at(1);
     let first = game.cardsFlipped.at(0);
     if (game.cards[last] === game.cards[first]) {
         /* its a match! Add to score */
         addScore(1);
-        /*   
-            (endgame score = score x remaining misses?)
-         */
+        /* (endgame score = score x remaining misses?)
+         or addScore by remaining misses?*/
         // move both cards to cardsMatched array and announce match
         game.cardsMatched.push(last);
         game.cardsMatched.push(first);
         game.turn = "match"; // used in hideFlipped function to denote cards to be removed from play
         // console.log(game.cardsMatched, game.cardsFlipped);
         notify("That's a match!");
+    } else {
+        checkMissed(first, last);
     };
-    // Check for endgame
-    game.cardsMatched.length === game.cards.length ? endGame() : hideFlipped(); // matched cards will also be removed by hideFlipped function.
+    // Check for endgame, if not then hide the flipped cards
+    game.cardsMatched.length === game.cards.length ? endGame(true) : hideFlipped(); // matched cards will also be removed by hideFlipped function.
+};
+function checkMissed(card0, card1) {
+    let seenCards = game.seenCards;
+    // .includes() is ES7 .find() is ES6
+    if (seenCards.includes(card0) || seenCards.includes(card1)) {
+        game.misses--;
+        let msg = String(game.misses);
+        if (game.misses < 2){ msg = "only " + msg;}
+        notify(`Match missed! ${msg} left`);
+        if (game.misses === 0) {
+            endGame();
+        }
+    }
+    // add both cards to seenCards array
+    game.seenCards.push(card0);
+    game.seenCards.push(card1);
 };
 /** Flips cards back over or hides them depending on if they are matched or not */
 function hideFlipped() {
@@ -214,8 +235,8 @@ function addScore(num) {
     game.score += num;
     document.querySelector("#score span").innerText = game.score;
 };
-function endGame() {
-    notify("Well done!");
+function endGame(w) {
+    w ? notify("Well done!") : notify("Game Over!");
     document.getElementById("score").firstChild.nodeValue = "Final Score:";
     //Check score against high score
     if (game.score === game.highScore) {
