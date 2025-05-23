@@ -117,7 +117,6 @@ p {
   background: url("../images/ggi-200-cardback.jpg") no-repeat center/100%;
   font-size: 2em;
   align-content: center;
-  cursor: pointer;
   transition: 1s ease-in-out;
 }
 /* make sure images will match the background card */

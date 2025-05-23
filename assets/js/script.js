@@ -49,6 +49,10 @@ function startGame() {
     document.getElementById("score").style.display = "block";
     document.getElementById("table-top").style.opacity = 1;
     document.getElementById("notification").style.removeProperty("display");
+    // set the cursor to a pointer for each card
+    for (let count =0;count < cardElements.length;count++) {
+        cardElements[count].style.cursor = "pointer";
+    }
     // the event listeners now handle the rest of game.
 };
 /** Adds event listeners for the apps buttons */
@@ -240,7 +244,7 @@ function addScore(num) {
 };
 function endGame(w) {
     w ? notify("Well done!") : notify("Game Over!");
-    document.getElementById("score").firstChild.nodeValue = "Final Score:";
+    document.getElementById("score").firstChild.nodeValue = "Final Score: ";
     //Check score against high score
     if (game.score === game.highScore) {
         notify("Equal Highscore!");
@@ -248,6 +252,12 @@ function endGame(w) {
     if (game.score > game.highScore) {
         notify("New High Score!");
         if (gameStorage) { localStorage.setItem("highscore", game.score.toString()) }
+        modalHighscore.getElementsByTagName("p")[0].innerText = game.score;
+    }
+    let count = 0;
+    while (count < cardElements.length) {
+        cardElements[count].style.cursor = "auto"; // set cursor to default
+        count++;
     }
     /* delay setting opacity on gameboard to allow for notify messages to show
     as the notify function clears the opacity style */
