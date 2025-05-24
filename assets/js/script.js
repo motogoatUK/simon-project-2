@@ -50,7 +50,7 @@ function startGame() {
     document.getElementById("table-top").style.opacity = 1;
     document.getElementById("notification").style.removeProperty("display");
     // set the cursor to a pointer for each card
-    for (let count =0;count < cardElements.length;count++) {
+    for (let count = 0; count < cardElements.length; count++) {
         cardElements[count].style.cursor = "pointer";
     }
     // the event listeners now handle the rest of game.
@@ -100,16 +100,37 @@ function initCards() {
     numCards = document.getElementsByClassName("card").length;
     /* we will be adding images here, but for testing we will be using letters */
     let cardValues = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
+    //preload initial images
+    let picDir = "assets/images/";
+    let picFiles = [
+        `${picDir}bee-8490747_150.jpg`,
+        `${picDir}caricature-819023_150.jpg`,
+        `${picDir}cat-3261420_150.jpg`,
+        `${picDir}dog-7417233_150.jpg`,
+        `${picDir}fox-715588_150.jpg`,
+        `${picDir}guinea-pig-5287749_150.jpg`,
+        `${picDir}llama-6782140_150.jpg`,
+        `${picDir}meerkat-7627746_150.jpg`
+    ];
+    //    preload(picFiles);
+    picFiles.forEach(function (element) {
+        let image = new Image();
+        image.src = element;
+        });
     console.log(numCards);
     for (let i = 0; i < numCards; i++) {
-        /* give 2 cards the same value */
-        game.cards[i] = cardValues.at(i);
-        game.cards[i + 1] = cardValues.at(i);
-        /* extra i++ to skip 2 */
-        i++;
+        /* give 2 cards the same value using Math.floor(i/2) */
+        game.cards[i] =  `<img src="${picFiles.at(Math.floor(i/2))}" alt="game image">`;
     };
-    console.log(game.cards);    
-    shuffleArray(game.cards);    
+    // for (let i = 0; i < numCards; i++) {
+    //     /* give 2 cards the same value */
+    //     game.cards[i] = cardValues.at(i);
+    //     game.cards[i + 1] = cardValues.at(i);
+    //     /* extra i++ to skip 2 */
+    //     i++;
+    // };
+    console.log(game.cards);
+    shuffleArray(game.cards);
 };
 
 /** Implemented from https://en.wikipedia.org/wiki/Fisher-Yates_shuffle */

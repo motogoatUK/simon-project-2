@@ -75,6 +75,9 @@ p {
   margin: 0 auto;
   padding: 2px;
 }
+#modal-instructions p > span {
+  text-decoration: underline;
+}
 #modal-highscore p {
   font-size: 2.5em;
 }
@@ -121,7 +124,9 @@ p {
 }
 /* make sure images will match the background card */
 .card img {
-  width: 100%;
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
   border-radius: 10%;
 }
 
