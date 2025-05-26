@@ -75,7 +75,7 @@ p {
   padding: 2px;
 }
 #modal-instructions p > span {
-  text-decoration: underline;
+  font-weight:bold;
 }
 #modal-highscore p {
   font-size: 2.5em;
@@ -227,6 +227,10 @@ footer {
   .card {
     max-width: 160px;
     max-height: 160px;
+  }
+  /* move modal contents up so they fit on the shorter screen */
+  #modal-instructions {
+    top:-15%;
   }
 }
 /* even smaller if screens are also not wide enough */

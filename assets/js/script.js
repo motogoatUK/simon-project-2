@@ -16,7 +16,7 @@ const modalHighscore = document.getElementById("modal-highscore");
 let gameStorage = false;
 if (typeof (Storage) !== "undefined") {
     gameStorage = true;
-};
+}
 
 /* Game code starts here */
 addButtonListeners(); /* create event listeners for buttons */
@@ -34,8 +34,8 @@ const game = {
 /* get highScore from storage if available */
 if (gameStorage) {
     let highScore = localStorage.getItem("highscore");
-    if (highScore !== null) { game.highScore = parseInt(highScore); };
-};
+    if (highScore !== null) { game.highScore = parseInt(highScore); }
+}
 modalHighscore.getElementsByTagName("p")[0].innerText = game.highScore; // set highScore in modal
 modalInstructions.style.display = "block"; // show Instructions
 /* Set initial opacity on tabletop and display initial message */
@@ -54,7 +54,7 @@ function startGame() {
         cardElements[count].style.cursor = "pointer";
     }
     // the event listeners now handle the rest of game.
-};
+}
 
 /** Adds event listeners for the apps buttons */
 function addButtonListeners() {
@@ -78,7 +78,7 @@ function addButtonListeners() {
             }
         });
     });
-};
+}
 
 /** Add event handlers for card clicks using once property to prevent same card clicking */
 function addCardListeners() {
@@ -90,8 +90,8 @@ function addCardListeners() {
     } catch (err) {
         console.log(err.message);
         return false;
-    };
-};
+    }
+}
 
 /**
  * Initcards - Initialises the card array
@@ -121,7 +121,7 @@ function initCards() {
     for (let i = 0; i < numCards; i++) {
         /* give 2 cards the same value using Math.floor(i/2) */
         game.cards[i] =  `<img src="${picFiles.at(Math.floor(i/2))}" alt="game image">`;
-    };
+    }
     // for (let i = 0; i < numCards; i++) {
     //     /* give 2 cards the same value */
     //     game.cards[i] = cardValues.at(i);
@@ -131,7 +131,7 @@ function initCards() {
     // };
     console.log(game.cards);
     shuffleArray(game.cards);
-};
+}
 
 /** Implemented from https://en.wikipedia.org/wiki/Fisher-Yates_shuffle */
 function shuffleArray(array) {
@@ -139,7 +139,7 @@ function shuffleArray(array) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-};
+}
 function showCard(num) {
     if (game.turn === "end") return; // If game is at end stage then skip this
     /* check if game is ready for selection - if not then ignore the last click and re add eventlistener for it */
@@ -155,13 +155,12 @@ function showCard(num) {
             /* check for match
             We need a delay here (set timeout) to give the user time to see the card before checking */
             setTimeout(() => checkMatch(), 400);
-        };
+        }
     } else {
         notify("stop trying to cheat me");
-        setTimeout(cardElements[num].addEventListener("click", () => { showCard(num) }, { once: true }), 200);
-
-    };
-};
+        setTimeout(cardElements[num].addEventListener("click", () => { showCard(num); }, { once: true }), 200);
+    }
+}
 /** Checks for matched pair and increases score then checks for endgame else it 
  * checks for misses then hands over to hideFlipped function
  */
@@ -169,7 +168,7 @@ function checkMatch() {
     /*There should only ever be 2 cards in cardsFlipped array. If not show an error */
     if (game.cardsFlipped.length !== 2) {
         console.error("More than 2 cards in flipped array!");
-    };
+    }
     let last = game.cardsFlipped.at(1);
     let first = game.cardsFlipped.at(0);
     if (game.cards[last] === game.cards[first]) {
@@ -184,10 +183,10 @@ function checkMatch() {
         notify("That's a match!");
     } else {
         checkMissed(first, last);
-    };
+    }
     // Check for endgame, if not then hide the flipped cards
     game.cardsMatched.length === game.cards.length ? endGame(true) : hideFlipped(); // matched cards will also be removed by hideFlipped function.
-};
+}
 function checkMissed(card0, card1) {
     let seenCards = game.seenCards;
     // .includes() is ES7 .find() is ES6
@@ -200,12 +199,12 @@ function checkMissed(card0, card1) {
             endGame();
             game.turn = "end";
             return; // return to previous routine
-        };
-    };
+        }
+    }
     // add both cards to seenCards array
     game.seenCards.push(card0);
     game.seenCards.push(card1);
-};
+}
 /** Flips cards back over or hides them depending on if they are matched or not */
 function hideFlipped() {
     /* There should only ever be at most 2 cards in cardsFlipped array */
@@ -225,24 +224,24 @@ function hideFlipped() {
                 setTimeout(() => {
                     lastCard.innerHTML = parseInt(last) + 1; // add 1 as cards are numbered 1-16 and array is 0-15
                     lastCard.classList.remove("revealed"); // remove revealed class
-                    lastCard.addEventListener("click", () => { showCard(last) }, { once: true });// add back the event listener
+                    lastCard.addEventListener("click", () => { showCard(last); }, { once: true });// add back the event listener
                 }, 1000);
-            };
-        };
+            }
+        }
         //once loop has finished allow next selection
         setTimeout(() => {
             game.inProgress = true;
             game.turn = "";
         }, 1000);
-    };
-};
+    }
+}
 function hideMatched(element, num) {
     // remove the matched card from the game board.
     // display = "none" will remove the element from the page layout
     // opacity:0 will keep the layout and make it invisible but not to screen readers
     // visibility:hidden will hide the element and still keep it in the layout
     element.style.visibility = "hidden";
-};
+}
 /** displays a large message in the middle of the gameboard for a short period */
 function notify(message) {
     const element = document.getElementById("notification");
@@ -254,7 +253,7 @@ function notify(message) {
         element.style.removeProperty("display");
         tableTop.style.removeProperty("opacity");
     }, 1000);
-};
+}
 /** Handles the response to the clicking of the start/reset button */
 function controlButtonClicked() {
     if (btnStart.innerText === "Start") {
@@ -264,14 +263,14 @@ function controlButtonClicked() {
         // reset score and other game variables, reset eventListeners,
         //  bring back matched cards. The simplest way is to reload the page....
         document.location.reload();
-    };
+    }
     startGame();
-};
+}
 /** Adds num to score and updates display */
 function addScore(num) {
     game.score += num;
     document.querySelector("#score span").innerText = game.score;
-};
+}
 function endGame(w) {
     w ? notify("Well done!") : notify("Game Over!");
     document.getElementById("score").firstChild.nodeValue = "Final Score: ";
@@ -281,7 +280,9 @@ function endGame(w) {
     }
     if (game.score > game.highScore) {
         notify("New High Score!");
-        if (gameStorage) { localStorage.setItem("highscore", game.score.toString()) }
+        if (gameStorage) {
+            localStorage.setItem("highscore", game.score.toString());
+        }
         modalHighscore.getElementsByTagName("p")[0].innerText = game.score;
     }
     let count = 0;
@@ -295,4 +296,4 @@ function endGame(w) {
         document.getElementById("table-top").style.opacity = "0.4";
         document.getElementById("notification").style.display = "block"; // show last message until reset
     }, 1200);
-};
+}
