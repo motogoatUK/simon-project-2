@@ -45,7 +45,14 @@ body {
 p {
   font-family: "Molengo", sans-serif;
 }
-
+a:link, a:visited {
+    color:var(--secondary-content);
+    text-decoration:none;
+}
+.a:hover {
+  color: var(--copy-light);
+  background-color: var(--primary-dark);
+}
 #content {
   margin: 0 auto;
   text-align: center;
