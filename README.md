@@ -83,30 +83,7 @@ The colour palette was generated at hover.dev based on an initial colour of rebe
 
 ## Testing
 
-This project uses manual testing procedures only but automated testing is discussed below.
-
-##### Testing procedures 
-| Test | outcome | Pass/Fail 
-|---|---|---
-|Instructions should be displayed when the app is loaded.| | Not Tested
-| It should be apparent that the Start button should be pressed.| | Not Tested
-| selecting any card at this point should have no effect |  | Not Tested
-| when the user clicks Start the game should start accepting selections | | Not Tested
-| when the start button is pressed it should become a reset game button | | Not Tested
-| when the reset game button is pressed the game should be reloaded | | Not Tested
-| when a card is selected it should flip over to show the face | | Not Tested
-| once a second card is selected, trying to select a third card should display a message | | Not Tested
-| showing 2 matching faces should increase the score | | Not Tested
-| showing 2 matching faces should nofity the user of a match | | Not Tested
-| after a match both cards should disappear from the board | | Not Tested
-| After a non-match both cards should flip back over and remain in play | | Not Tested
-| If a card that has previously been shown is not matched, message should be displayed and 1 life removed.| | Not Tested  
-| If a missed match is shown 6 times the game should end immediately with a message shown | | Not Tested  
-| After all cards are matched, a congratulatory message should be shown | | Not Tested  
-| After all cards are matched, the final score should be shown | | Not Tested  
-| If a highscore is attained a message should show this. The High score should be updated | | Not Tested |
-| When the game is over, clicking any any remaing cards should have no effect | | OK 
-
+This project uses manual testing procedures only but automated testing is discussed below.  
 
 ### Manual Testing
 *Manual testing is used to evaluate the project and to find bugs and areas for improvement.*  
@@ -121,6 +98,33 @@ Tests are written to expect a certain result based on inputs. These are mainly f
 #### Summary
 Development requires a mix of both manual and automated testing routines for the best outcome. Manual testing is more time-consuming so thought must be given to use automated testing where possible.
 
+##### Testing procedures 
+| Test | outcome | Pass/Fail 
+|---|---|---
+|Instructions should be displayed when the app is loaded.| Instructions displayed on page load | Pass
+| It should be apparent that the Start button should be pressed.| Instructions mention this also there is an overlay showing where the start button is located and that it should be pressed | Pass
+| selecting any card before start is pressed should have no effect | clicking on the cards have no effect | Pass
+| when the user clicks Start the game should start accepting selections | Once start is clicked cards can be selected | Pass
+| when the start button is pressed it should become a reset game button | Start button shows as reset game after being pressed | Pass
+| when the reset game button is pressed the game should be reloaded | Pressing reset reloads the game to it's inital state | Pass
+| when a card is selected it should flip over to show the face | When a card is selected it reveals an image | Pass
+| once a second card is selected, trying to select a third card should display a message | Message displayed and card is not shown | Pass
+| showing 2 matching faces should increase the score | score increases when a match is made | Pass
+| showing 2 matching faces should nofity the user of a match | "It's a Match!" is displayed | Pass
+| after a match both cards should disappear from the board | Cards disappear once matched | Pass
+| After a non-match both cards should flip back over and remain in play | Both cards turn back over and can be selected again | Pass
+| If a card that has previously been shown is not matched, message should be displayed and 1 life removed.| Message showing Missed match is dsplayed and chances remaining is also displayed | Pass  
+| If a missed match is shown 6 times the game should end immediately with a message shown | "Game Over" is displayed | Pass  
+| After all cards are matched, a congratulatory message should be shown | "Well done" or "High Score" is displayed | Pass  
+| After all cards are matched, the final score should be shown | Final score shows at bottom of screen where the score was shown | Pass  
+| If a highscore is attained a message should show this. The High score should be updated | "High Score" is shown and the High score modal reflects the new high score | Pass |
+| When the game is over, clicking any any remaing cards should have no effect | When the game is over it is not possible to select any remaining cards | Pass 
+
+#### Code testing
+- HTML validator.w3.org - 2 errors
+- CSS - jigsaw.w3.org - Passes CSS3, no errors.
+- Javascript - JSHint - using a front end written during the course - 36 errors mainly Unnecessary semicolons. Once these were removed 4 errors.  
+
 ### Bugs
 ##### 2025-05-15
 > Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.
@@ -132,7 +136,7 @@ Development requires a mix of both manual and automated testing routines for the
 ##### 2025-05-16
 > Game interface responds well to all different display widths, but only in portrait mode. when switching to landscape the game board can only display the first row / row and half  
 >##### FIX:
-> not fixed  
+> ~~not fixed~~ 2025-05-26 - Added media queries for different heights of viewport on smaller screens.  
 ##### 2025-05-18
 > Clicking same card twice produces a match. Changed .onclick to addEventListeners but could not get removeEventListeners to work.
 >##### FIX
