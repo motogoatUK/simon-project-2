@@ -45,7 +45,7 @@ document.getElementById("notification").style.display = "block";
 /** *Initialises card deck then starts event listeners on the deck */
 function startGame() {
     initCards();
-    addCardListeners() ? game.inProgress = true : console.error("card listener failed to start");
+    addCardListeners() ? (game.inProgress = true) : console.error("card listener failed to start");
     document.getElementById("score").style.display = "block";
     document.getElementById("table-top").style.opacity = 1;
     document.getElementById("notification").style.removeProperty("display");
@@ -67,7 +67,7 @@ function addButtonListeners() {
     });
     /* As there is a close button span inside each individual modal we need to use parentNode.parentNode to target the .modal element */
     /* Credit to w3schools.com for information on array spread [...] */
-    [...btnClose].forEach(element => {
+    [...btnClose].forEach((element) => {
         element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });
     });
     /* Also close modal if user clicks outside of content box */
@@ -97,10 +97,8 @@ function addCardListeners() {
  * Initcards - Initialises the card array
  */
 function initCards() {
-    numCards = document.getElementsByClassName("card").length;
-    /* we will be adding images here, but for testing we will be using letters */
-    let cardValues = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
-    //preload initial images
+    let numCards = document.getElementsByClassName("card").length;
+    // set initial images
     let picDir = "assets/images/";
     let picFiles = [
         `${picDir}bee-8490747_150.jpg`,
@@ -112,24 +110,15 @@ function initCards() {
         `${picDir}llama-6782140_150.jpg`,
         `${picDir}meerkat-7627746_150.jpg`
     ];
-    //    preload(picFiles);
+    // preload (picFiles)
     picFiles.forEach(function (element) {
         let image = new Image();
         image.src = element;
-        });
-    console.log(numCards);
+    });
     for (let i = 0; i < numCards; i++) {
         /* give 2 cards the same value using Math.floor(i/2) */
-        game.cards[i] =  `<img src="${picFiles.at(Math.floor(i/2))}" alt="game image">`;
+        game.cards[i] = `<img src="${picFiles.at(Math.floor(i / 2))}" alt="game image">`;
     }
-    // for (let i = 0; i < numCards; i++) {
-    //     /* give 2 cards the same value */
-    //     game.cards[i] = cardValues.at(i);
-    //     game.cards[i + 1] = cardValues.at(i);
-    //     /* extra i++ to skip 2 */
-    //     i++;
-    // };
-    console.log(game.cards);
     shuffleArray(game.cards);
 }
 
@@ -140,12 +129,16 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
+/** Checks if we are ecpecting a selection then shows the cards value by adding 'revealed' class.
+ * Sets a timeout for checkMatch function. Adds back the eventlistener and shows message if a selection was invalid.
+ */
 function showCard(num) {
     if (game.turn === "end") return; // If game is at end stage then skip this
     /* check if game is ready for selection - if not then ignore the last click and re add eventlistener for it */
     if (game.inProgress) {
 
-        thisCard = cardElements[num];
+        let thisCard = cardElements[num];
         thisCard.classList.add("revealed");
         thisCard.innerHTML = game.cards[num];
         /* add to cardsFlipped, push() returns the new length of array so we can check directly */
@@ -161,6 +154,7 @@ function showCard(num) {
         setTimeout(cardElements[num].addEventListener("click", () => { showCard(num); }, { once: true }), 200);
     }
 }
+
 /** Checks for matched pair and increases score then checks for endgame else it 
  * checks for misses then hands over to hideFlipped function
  */
@@ -174,12 +168,10 @@ function checkMatch() {
     if (game.cards[last] === game.cards[first]) {
         /* its a match! Add to score */
         addScore(game.lives);
-        // addScore by remaining lives?*/
         // move both cards to cardsMatched array and announce match
         game.cardsMatched.push(last);
         game.cardsMatched.push(first);
         game.turn = "match"; // used in hideFlipped function to denote cards to be removed from play
-        // console.log(game.cardsMatched, game.cardsFlipped);
         notify("That's a match!");
     } else {
         checkMissed(first, last);
@@ -187,6 +179,7 @@ function checkMatch() {
     // Check for endgame, if not then hide the flipped cards
     game.cardsMatched.length === game.cards.length ? endGame(true) : hideFlipped(); // matched cards will also be removed by hideFlipped function.
 }
+
 function checkMissed(card0, card1) {
     let seenCards = game.seenCards;
     // .includes() is ES7 .find() is ES6
@@ -205,6 +198,7 @@ function checkMissed(card0, card1) {
     game.seenCards.push(card0);
     game.seenCards.push(card1);
 }
+
 /** Flips cards back over or hides them depending on if they are matched or not */
 function hideFlipped() {
     /* There should only ever be at most 2 cards in cardsFlipped array */
@@ -219,7 +213,7 @@ function hideFlipped() {
             let last = game.cardsFlipped.pop(); //remove from flipped array
             let lastCard = cardElements[last]; // get the relevant HTML element
             if (game.turn === "match") {
-                hideMatched(lastCard, last);
+                hideMatched(lastCard);
             } else {
                 setTimeout(() => {
                     lastCard.innerHTML = parseInt(last) + 1; // add 1 as cards are numbered 1-16 and array is 0-15
@@ -235,13 +229,15 @@ function hideFlipped() {
         }, 1000);
     }
 }
-function hideMatched(element, num) {
+
+function hideMatched(element) {
     // remove the matched card from the game board.
     // display = "none" will remove the element from the page layout
     // opacity:0 will keep the layout and make it invisible but not to screen readers
     // visibility:hidden will hide the element and still keep it in the layout
     element.style.visibility = "hidden";
 }
+
 /** displays a large message in the middle of the gameboard for a short period */
 function notify(message) {
     const element = document.getElementById("notification");
@@ -254,6 +250,7 @@ function notify(message) {
         tableTop.style.removeProperty("opacity");
     }, 1000);
 }
+
 /** Handles the response to the clicking of the start/reset button */
 function controlButtonClicked() {
     if (btnStart.innerText === "Start") {
@@ -266,11 +263,13 @@ function controlButtonClicked() {
     }
     startGame();
 }
+
 /** Adds num to score and updates display */
 function addScore(num) {
     game.score += num;
     document.querySelector("#score span").innerText = game.score;
 }
+
 function endGame(w) {
     w ? notify("Well done!") : notify("Game Over!");
     document.getElementById("score").firstChild.nodeValue = "Final Score: ";
