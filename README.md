@@ -98,32 +98,34 @@ Tests are written to expect a certain result based on inputs. These are mainly f
 #### Summary
 Development requires a mix of both manual and automated testing routines for the best outcome. Manual testing is more time-consuming so thought must be given to use automated testing where possible.
 
-##### Testing procedures 
-| Test | outcome | Pass/Fail 
-|---|---|---
-|Instructions should be displayed when the app is loaded.| Instructions displayed on page load | Pass
-| It should be apparent that the Start button should be pressed.| Instructions mention this also there is an overlay showing where the start button is located and that it should be pressed | Pass
+#### Project Testing Procedures 
+| Test | outcome | Pass/Fail | image |
+|---|---|---|---|
+|Instructions should be displayed when the app is loaded.| Instructions displayed on page load | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-01.png) 
+| clicking either the X of outside the instructions area should close the modal | modal closes in both circumstances | Pass
+| It should be apparent that the Start button should be pressed.| Instructions mention this also there is an overlay showing where the start button is located and that it should be pressed | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-03.png) 
 | selecting any card before start is pressed should have no effect | clicking on the cards have no effect | Pass
-| when the user clicks Start the game should start accepting selections | Once start is clicked cards can be selected | Pass
-| when the start button is pressed it should become a reset game button | Start button shows as reset game after being pressed | Pass
+| clicking the "High Scores" button should open the Highscore modal | clicking the button opens the modal | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-05.png) |
+| when the user clicks Start the game should start accepting selections | Once start is clicked cards can be selected | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-07.png) 
+| when the start button is pressed it should become a reset game button | Start button shows as reset game after being pressed | Pass | as above |
 | when the reset game button is pressed the game should be reloaded | Pressing reset reloads the game to it's inital state | Pass
-| when a card is selected it should flip over to show the face | When a card is selected it reveals an image | Pass
-| once a second card is selected, trying to select a third card should display a message | Message displayed and card is not shown | Pass
-| showing 2 matching faces should increase the score | score increases when a match is made | Pass
-| showing 2 matching faces should nofity the user of a match | "It's a Match!" is displayed | Pass
-| after a match both cards should disappear from the board | Cards disappear once matched | Pass
+| when a card is selected it should flip over to show the face | When a card is selected it reveals an image | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-09.png) 
+| once a second card is selected, trying to select a third card should display a message | Message displayed and card is not shown | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-10.png) 
+| showing 2 matching faces should increase the score | score increases when a match is made | Pass | shown below |
+| showing 2 matching faces should nofity the user of a match | "It's a Match!" is displayed | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-12.png) 
+| after a match both cards should disappear from the board | Cards disappear once matched | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-14.png) 
 | After a non-match both cards should flip back over and remain in play | Both cards turn back over and can be selected again | Pass
-| If a card that has previously been shown is not matched, message should be displayed and 1 life removed.| Message showing Missed match is dsplayed and chances remaining is also displayed | Pass  
-| If a missed match is shown 6 times the game should end immediately with a message shown | "Game Over" is displayed | Pass  
-| After all cards are matched, a congratulatory message should be shown | "Well done" or "High Score" is displayed | Pass  
-| After all cards are matched, the final score should be shown | Final score shows at bottom of screen where the score was shown | Pass  
-| If a highscore is attained a message should show this. The High score should be updated | "High Score" is shown and the High score modal reflects the new high score | Pass |
+| If a card that has previously been shown is not matched, message should be displayed and 1 life removed.| Message showing Missed match is dsplayed and chances remaining is also displayed | Pass  | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-16.png) 
+| If a missed match is shown 6 times the game should end immediately with a message shown | "Game Over" is displayed | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-17.png) |
+| After all cards are matched, a congratulatory message should be shown | "Well done" or "High Score" is displayed | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-18.png) 
+| After all cards are matched, the final score should be shown | Final score shows at bottom of screen where the score was shown | Pass 
+| If a highscore is attained a message should show this. The High score should be updated | "High Score" is shown and the High score modal reflects the new high score | Pass | | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-20.png) 
 | When the game is over, clicking any any remaing cards should have no effect | When the game is over it is not possible to select any remaining cards | Pass 
 
 #### Code testing
-- HTML validator.w3.org - 2 errors
-- CSS - jigsaw.w3.org - Passes CSS3, no errors.
-- Javascript - JSHint - using a front end written during the course - 36 errors mainly Unnecessary semicolons. Once these were removed 4 errors.  
+- HTML validator.w3.org - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)
+- CSS - jigsaw.w3.org - Passes CSS3, no errors.![w3c-css-pass](assets/readme-files/dc-p2-w3c-css-jigsaw-pass.png)
+- Javascript - JSHint - using a front end written during the course - 36 errors mainly Unnecessary semicolons. Once these were removed 4 errors. ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
 
 ### Bugs
 ##### 2025-05-15
@@ -159,5 +161,6 @@ When that still didn't work, I looked at the code again and found I was setting 
 https://www.hover.dev/css-color-palette-generator for the colour palette ideas  
 https://www.w3schools.com/ for help with localStorage (to save scores) among many other things  
 [stackoverflow.com](https://stackoverflow.com/questions) for seeing interesting different ways to accomplish the same goal.  
+[wikipedia](https://en.wikipedia.org/wiki/Fisher-Yates_shuffle) for the Fisher-Yates shuffle code.  
 Rory Patrick Sheridan (Code Institute) for his excellent mentoring sessions.  
 Robert Thompson (Dudley College) for invaluable guidance
