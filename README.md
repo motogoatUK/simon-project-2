@@ -8,7 +8,7 @@ Link to project board (Kanban): https://github.com/users/motogoatUK/projects/5
 ### Strategy
 To create a memory game for casual gamers and other users to play and help improve memory skills. 
 #### User goals:
-The full user stories along with acceptance criteria and associated tasks can be found in this [project board](https://github.com/users/motogoatUK/projects/5) linked here and above. Below is a short summary of these goals:
+The full user stories along with acceptance criteria and associated tasks can be found in this [project board](https://github.com/users/motogoatUK/projects/5) linked here and above.![Matchy Match project board](assets/readme-files/dc-p2-project-board.png) Below is a short summary of these goals:
  - Visitor requires responsive layout
  - Player wants a clean game interface
  - Gamer wants to play the game
@@ -99,6 +99,8 @@ Tests are written to expect a certain result based on inputs. These are mainly f
 Development requires a mix of both manual and automated testing routines for the best outcome. Manual testing is more time-consuming so thought must be given to use automated testing where possible.
 
 #### Project Testing Procedures 
+Once deployed, the project was tested using various devices including a laptop and mobile phone. On the desktop, the browsers Edge, Chrome and Firefox were used to certify compatibility. The following tests were written for the application:  
+
 | Test | outcome | Pass/Fail | image |
 |---|---|---|---|
 |Instructions should be displayed when the app is loaded.| Instructions displayed on page load | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-01.png) 
@@ -119,7 +121,7 @@ Development requires a mix of both manual and automated testing routines for the
 | If a missed match is shown 6 times the game should end immediately with a message shown | "Game Over" is displayed | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-17.png) |
 | After all cards are matched, a congratulatory message should be shown | "Well done" or "High Score" is displayed | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-18.png) 
 | After all cards are matched, the final score should be shown | Final score shows at bottom of screen where the score was shown | Pass 
-| If a highscore is attained a message should show this. The High score should be updated | "High Score" is shown and the High score modal reflects the new high score | Pass | | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-20.png) 
+| If a highscore is attained a message should show this. The High score should be updated | "High Score" is shown and the High score modal reflects the new high score | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-20.png) 
 | When the game is over, clicking any any remaing cards should have no effect | When the game is over it is not possible to select any remaining cards | Pass 
 
 #### Code testing
@@ -154,8 +156,31 @@ Development requires a mix of both manual and automated testing routines for the
 >I read this on MDN web docs: "`Storage` only supports storing and retrieving strings. If you want to save other data types, you have to convert them to strings." On checking game.score is a number so the code is now: `if (gameStorage) { localStorage.setItem("highScore", game.score.toString())};`
 When that still didn't work, I looked at the code again and found I was setting it with **highScore** but when reading it I was using **highscore**! Set both to *highscore* and it works.
 
-
 ## Deployment
+
+The below steps are used to deploy the project to Github pages.  
+1. Login to github and select the repository **motogoatUK/simon-project-2**
+1. From the menu items near the top right select **Settings**
+1. Select the **Pages** from the left hand side menu
+1. Under *Branch* select **main** branch
+1. Select **Save** to confirm  
+Once confirmed, GitHub will build and deploy the site. After a few minutes a link should be shown under the **GitHub Pages** section as shown in the image below.  
+You may need to refresh the page to see the link. For this project the link is [https://motogoatuk.github.io/simon-project-21](https://motogoatuk.github.io/simon-project-2)  
+
+![Image showing Github pages link](assets/readme-files/dc-p2-github-pages.png)
+
+The project can be worked on locally by cloning the repository  
+#### How to Clone a Repository
+
+1. Navigate to the repository [https://github.com/motogoatuk/simon-project-2]
+2. Click the Code button and copy the repository URL
+3. Open your terminal (or Git Bash)
+4. Change your working directory to where you want the cloned directory to be made
+5. Type _git clone_ then paste in the [repository URL] from step 2
+6. Press Enter
+
+## Deployed project
+![mock-up image of deployed project]()  
 
 ## Credits
 https://www.hover.dev/css-color-palette-generator for the colour palette ideas  
