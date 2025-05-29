@@ -155,6 +155,10 @@ Once deployed, the project was tested using various devices including a laptop a
 >##### FIX:
 >I read this on MDN web docs: "`Storage` only supports storing and retrieving strings. If you want to save other data types, you have to convert them to strings." On checking game.score is a number so the code is now: `if (gameStorage) { localStorage.setItem("highScore", game.score.toString())};`
 When that still didn't work, I looked at the code again and found I was setting it with **highScore** but when reading it I was using **highscore**! Set both to *highscore* and it works.
+##### 2025-05-29
+>Found while preparing responsive design screenshots. At certain screensizes the modal doesn't fully cover the full length of the screen, allowing the start button to be pressed, leaving the instructions on-screen.
+![screenshot of bug found](assets/readme-files/bug-2025-05-29.png)
+
 
 ## Deployment
 
