@@ -128,7 +128,8 @@ Once deployed, the project was tested using various devices including a laptop a
 - HTML validator.w3.org - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)
 - CSS - jigsaw.w3.org - Passes CSS3, no errors.![w3c-css-pass](assets/readme-files/dc-p2-w3c-css-jigsaw-pass.png)
 -----
-- Javascript - JSHint - using a front end written during the course - 36 errors mainly Unnecessary semicolons. Once these were removed 4 errors. ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
+- Javascript - JSHint - using a front end written during the course - 36 errors mainly unnecessary semicolons. Once these were removed 4 errors remained. ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
+
 Line 188 changed from:  
     `game.cardsMatched.length === game.cards.length ? endGame(true) : hideFlipped();`  
     to:  
@@ -136,7 +137,7 @@ Line 188 changed from:
      `   endGame(true);  `  
     `} else {  `  
      `   hideFlipped();`  
-    `}  `
+    `}  `  
 Line 275 changed from:
      `w ? notify("Well done!") : notify("Game Over!");`  
     to:  
@@ -207,17 +208,17 @@ The project can be worked on locally by cloning the repository
 | - Player wants a clean game interface | 
 | - Gamer wants to play the game | 
 | - Player wants to see high score | 
-| - Player would like to see varying images | next release
-| - Gamer wants to personalise the game experience | next release
-| - Gamer would like to see animations and/or sound | future release
+| - Player would like to see varying images | for next release
+| - Gamer wants to personalise the game experience | for next release
+| - Gamer would like to see animations and/or sound | for a future release
 
 #### Responsive screenshots
 | Device | portrait / normal | landscape / widescreen  
 | --- | --- | --- 
 | Galaxy Z fold | ![galaxy-z](assets/readme-files/ss-galaxy-z.png) | ![galaxy-z-land](assets/readme-files/ss-galaxy-z-landscape.png) |
-| Iphone | ![iphone](assets/readme-files/ss-iphone.png) | ![iphone-land](<assets/readme-files/ss-iphone landscape.png>) | 
+| Iphone | ![iphone](assets/readme-files/ss-iphone.png) | ![iphone-land](assets/readme-files/ss-iphone-landscape.png) | 
 | Ipad | ![ipad](assets/readme-files/ss-ipad.png) | 
-| Laptop | ![laptop](assets/readme-files/ss-laptop-short.png) | ![laptop-wide](assets/readme-files/ss-laptop-wide.png) 
+| Laptop | ![laptop](assets/readme-files/ss-laptop-short.png) | ![laptop-wide](assets/readme-files/ss-laptop-wide.png)  
 | Desktop | ![desktop](assets/readme-files/ss-1920x1080.png) | ![desktop-wide](assets/readme-files/ss-widescreen.png) | 
 | Ultrawide | ![ultrawide](assets/readme-files/ss-ultrawide.png)
 
