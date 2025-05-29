@@ -125,12 +125,15 @@ Once deployed, the project was tested using various devices including a laptop a
 | When the game is over, clicking any any remaing cards should have no effect | When the game is over it is not possible to select any remaining cards | Pass 
 
 #### Code testing
-- HTML validator.w3.org - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)
+- HTML validator.w3.org - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)  
+>Added missing ; and removed stray end tag - Passed!
+>![w3c-html-pass](assets/readme-files/dc-p2-w3c-html-pass.png)  
+
 - CSS - jigsaw.w3.org - Passes CSS3, no errors.![w3c-css-pass](assets/readme-files/dc-p2-w3c-css-jigsaw-pass.png)
 -----
 - Javascript - JSHint - using a front end written during the course - 36 errors mainly unnecessary semicolons. Once these were removed 4 errors remained. ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
 
-Line 188 changed from:  
+>Line 188 changed from:  
     `game.cardsMatched.length === game.cards.length ? endGame(true) : hideFlipped();`  
     to:  
     `if (game.cardsMatched.length === game.cards.length) { `  
@@ -138,12 +141,16 @@ Line 188 changed from:
     `} else {  `  
      `   hideFlipped();`  
     `}  `  
-Line 275 changed from:
+    
+>Line 275 changed from:  
      `w ? notify("Well done!") : notify("Game Over!");`  
     to:  
     `const endMessage = w ? "Well done!" : "Game Over!";`  
     `notify(endMessage);`  
 
+- Accessibility - https://wave.webaim.org/report#/https://motogoatuk.github.io/simon-project-2/index.html
+
+----
 ### Bugs
 ##### 2025-05-15
 > Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.
