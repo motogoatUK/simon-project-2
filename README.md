@@ -127,7 +127,7 @@ Once deployed, the project was tested using various devices including a laptop a
 #### Code testing
 - HTML validator.w3.org - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)
 - CSS - jigsaw.w3.org - Passes CSS3, no errors.![w3c-css-pass](assets/readme-files/dc-p2-w3c-css-jigsaw-pass.png)
-- Javascript - JSHint - using a front end written during the course - 36 errors mainly Unnecessary semicolons. Once these were removed 4 errors. ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
+- Javascript - JSHint - using a front end written during the course - 36 errors mainly Unnecessary semicolons. Once these were removed 4 errors. ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png) 
 
 ### Bugs
 ##### 2025-05-15
@@ -181,6 +181,15 @@ The project can be worked on locally by cloning the repository
 
 ## Deployed project
 ![mock-up image of deployed project]()  
+#### User story compliance
+ - Visitor requires responsive layout :
+ ![alt text](assets/readme-files/ss-1920x1080.png)![alt text](assets/readme-files/ss-galaxy-z.png)![alt text](<assets/readme-files/ss-iphone landscape.png>)![alt text](assets/readme-files/ss-iphone.png)![alt text](assets/readme-files/ss-ipad.png)![alt text](assets/readme-files/ss-laptop-short.png)![alt text](assets/readme-files/ss-laptop-wide.png)![alt text](assets/readme-files/ss-ultrawide.png)![alt text](assets/readme-files/ss-widescreen.png)
+ - Player wants a clean game interface
+ - Gamer wants to play the game
+ - Player wants to see high score
+ - Player would like to see varying images
+ - Gamer wants to personalise the game experience
+ - Gamer would like to see animations and/or sound
 
 ## Credits
 https://www.hover.dev/css-color-palette-generator for the colour palette ideas  
