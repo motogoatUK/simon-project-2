@@ -14,7 +14,7 @@ const modalHighscore = document.getElementById("modal-highscore");
 
 /* check for local storage */
 let gameStorage = false;
-if (typeof (Storage) !== "undefined") {
+if (Storage !== "undefined") {
     gameStorage = true;
 }
 
@@ -29,11 +29,11 @@ const game = {
     inProgress: false,
     cardsFlipped: [],
     cardsMatched: [],
-    seenCards: [],
+    seenCards: []
 };
 /* get highScore from storage if available */
 if (gameStorage) {
-    let highScore = localStorage.getItem("highscore");
+    const highScore = localStorage.getItem("highscore");
     if (highScore !== null) { game.highScore = parseInt(highScore); }
 }
 modalHighscore.getElementsByTagName("p")[0].innerText = game.highScore; // set highScore in modal
@@ -88,7 +88,6 @@ function addCardListeners() {
         });
         return true;
     } catch (err) {
-        console.log(err.message);
         return false;
     }
 }
@@ -97,10 +96,10 @@ function addCardListeners() {
  * Initcards - Initialises the card array
  */
 function initCards() {
-    let numCards = document.getElementsByClassName("card").length;
+    const numCards = document.getElementsByClassName("card").length;
     // set initial images
-    let picDir = "assets/images/";
-    let picFiles = [
+    const picDir = "assets/images/";
+    const picFiles = [
         `${picDir}bee-8490747_150.jpg`,
         `${picDir}caricature-819023_150.jpg`,
         `${picDir}cat-3261420_150.jpg`,
@@ -137,14 +136,13 @@ function showCard(num) {
     if (game.turn === "end") return; // If game is at end stage then skip this
     /* check if game is ready for selection - if not then ignore the last click and re add eventlistener for it */
     if (game.inProgress) {
-
-        let thisCard = cardElements[num];
+        const thisCard = cardElements[num];
         thisCard.classList.add("revealed");
         thisCard.innerHTML = game.cards[num];
         /* add to cardsFlipped, push() returns the new length of array so we can check directly */
         if (game.cardsFlipped.push(num) > 1) {
-            /* We should prevent any more cards being selected.*/
-            game.inProgress = false; //no card clicks accepted until all cards shown have been flipped back or removed from the board
+            /* We should prevent any more cards being selected. */
+            game.inProgress = false; // no card clicks accepted until all cards shown have been flipped back or removed from the board
             /* check for match
             We need a delay here (set timeout) to give the user time to see the card before checking */
             setTimeout(() => checkMatch(), 400);
@@ -155,11 +153,11 @@ function showCard(num) {
     }
 }
 
-/** Checks for matched pair and increases score then checks for endgame else it 
+/** Checks for matched pair and increases score then checks for endgame else it
  * checks for misses then hands over to hideFlipped function
  */
 function checkMatch() {
-    /*There should only ever be 2 cards in cardsFlipped array. If not show an error */
+    /* There should only ever be 2 cards in cardsFlipped array. If not show an error */
     if (game.cardsFlipped.length !== 2) {
         console.error("More than 2 cards in flipped array!");
     }
@@ -177,7 +175,11 @@ function checkMatch() {
         checkMissed(first, last);
     }
     // Check for endgame, if not then hide the flipped cards
-    game.cardsMatched.length === game.cards.length ? endGame(true) : hideFlipped(); // matched cards will also be removed by hideFlipped function.
+    if (game.cardsMatched.length === game.cards.length) {
+        endGame(true);
+    } else {
+        hideFlipped();
+    } // matched cards will also be removed by hideFlipped function.
 }
 
 function checkMissed(card0, card1) {
@@ -205,12 +207,13 @@ function hideFlipped() {
     /* As this function will run any number of flips, we will check and log an error if there are more than 2 */
     let numFlipped = game.cardsFlipped.length;
     if (numFlipped > 2) {
-        console.error("More than 2 cards in flipped array!");
+        const errMsg = "More than 2 cards in flipped array!";
+        alert(errMsg);
+        throw errMsg;
     } else {
         if (game.turn === "end") return; // If game is at end stage then skip this
         for (let i = 0; i < numFlipped; i++) {
-
-            let last = game.cardsFlipped.pop(); //remove from flipped array
+            let last = game.cardsFlipped.pop(); // remove from flipped array
             let lastCard = cardElements[last]; // get the relevant HTML element
             if (game.turn === "match") {
                 hideMatched(lastCard);
@@ -222,7 +225,7 @@ function hideFlipped() {
                 }, 1000);
             }
         }
-        //once loop has finished allow next selection
+        // once loop has finished allow next selection
         setTimeout(() => {
             game.inProgress = true;
             game.turn = "";
@@ -256,7 +259,7 @@ function controlButtonClicked() {
     if (btnStart.innerText === "Start") {
         btnStart.innerText = "Reset Game";
     } else {
-        // go through a whole routine to re flip any flipped cards, 
+        // go through a whole routine to re flip any flipped cards,
         // reset score and other game variables, reset eventListeners,
         //  bring back matched cards. The simplest way is to reload the page....
         document.location.reload();
@@ -271,9 +274,10 @@ function addScore(num) {
 }
 
 function endGame(w) {
-    w ? notify("Well done!") : notify("Game Over!");
+    const endMessage = w ? "Well done!" : "Game Over!";
+    notify(endMessage);
     document.getElementById("score").firstChild.nodeValue = "Final Score: ";
-    //Check score against high score
+    // Check score against high score
     if (game.score === game.highScore) {
         notify("Equal Highscore!");
     }
