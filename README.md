@@ -158,7 +158,8 @@ When that still didn't work, I looked at the code again and found I was setting 
 ##### 2025-05-29
 >Found while preparing responsive design screenshots. At certain screensizes the modal doesn't fully cover the full length of the screen, allowing the start button to be pressed, leaving the instructions on-screen.
 ![screenshot of bug found](assets/readme-files/bug-2025-05-29.png)
-
+>##### FIX:
+>I discovered that moving the instructions up on smaller screens moved the entire modal. modified the code targeting `#modal-instructions` to `#modal-instructions > .modal-content` I couldn't just change it to `.modal-content` as this would have also affected the other modals.
 
 ## Deployment
 

@@ -236,8 +236,8 @@ footer {
     max-height: 160px;
   }
   /* move modal contents up so they fit on the shorter screen */
-  #modal-instructions {
-    top:-15%;
+  #modal-instructions > .modal-content {
+    top:-14%;
   }
 }
 /* even smaller if screens are also not wide enough */
