@@ -38,6 +38,7 @@ if (gameStorage) {
 }
 modalHighscore.getElementsByTagName("p")[0].innerText = game.highScore; // set highScore in modal
 modalInstructions.style.display = "block"; // show Instructions
+//btnClose[0].focus(); // focus on close button so escape key works to close
 /* Set initial opacity on tabletop and display initial message */
 document.getElementById("table-top").style.opacity = 0.4;
 document.getElementById("notification").style.display = "block";
@@ -68,17 +69,26 @@ function addButtonListeners() {
     /* As there is a close button span inside each individual modal we need to use parentNode.parentNode to target the .modal element */
     /* Credit to w3schools.com for information on array spread [...] */
     [...btnClose].forEach((element) => {
-        element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });
+        element.addEventListener("click", (e) => {
+            e.target.parentNode.parentNode.style.display = 'none';
+        });
     });
     /* Also close modal if user clicks outside of content box */
     window.addEventListener("click", (e) => {
-        [...modals].forEach((modal) => {
+         [...modals].forEach((modal) => {
             if (e.target === modal) {
                 modal.style.display = 'none';
             }
         });
     });
-}
+    /* Finally close modals if Escape key is pressed */
+    document.addEventListener("keydown", (e) => {
+        if (e.key === 'Escape') {
+            modalInstructions.style.display = 'none';
+            modalHighscore.style.display = 'none';
+        }
+    });
+ }
 
 /** Add event handlers for card clicks using once property to prevent same card clicking */
 function addCardListeners() {
