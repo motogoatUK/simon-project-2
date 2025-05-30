@@ -26,12 +26,14 @@ based on a main colour of rebeccapurple (#663399) */
   --warning-content: #000000;
   --error-content: #f2d9d9;
 }
+
 /* reset CSS */
 * {
   margin: 0;
   padding: 0;
 }
 
+/* -- Elements -- */
 /* fonts from googlefonts suggested by https://fontjoy.com */
 body {
   /* Set main font with backup fonts */
@@ -45,14 +47,22 @@ body {
 p {
   font-family: "Molengo", sans-serif;
 }
-a:link, a:visited {
-    color:var(--secondary-content);
-    text-decoration:none;
+a:link,
+a:visited {
+  color: var(--secondary-content);
+  text-decoration: none;
 }
 .a:hover {
   color: var(--copy-light);
   background-color: var(--primary-dark);
 }
+footer {
+  min-height: 50px;
+  align-content: flex-end;
+  margin-top: auto;
+}
+
+/* -- ID's -- */
 #content {
   margin: 0 auto;
   text-align: center;
@@ -71,7 +81,6 @@ a:link, a:visited {
   flex-wrap: wrap;
   align-content: space-around;
 }
-
 #score {
   display: none;
   font-size: 1.2em;
@@ -82,7 +91,7 @@ a:link, a:visited {
   padding: 2px;
 }
 #modal-instructions p > span {
-  font-weight:bold;
+  font-weight: bold;
 }
 #modal-highscore p {
   font-size: 2.5em;
@@ -101,6 +110,8 @@ a:link, a:visited {
   text-shadow: 1px 1px 2px var(--foreground), -1px -1px 2px var(--foreground),
     -1px 1px 2px var(--foreground), 1px -1px 2px var(--foreground);
 }
+
+/* -- Classes -- */
 .chango {
   font-family: "Chango", sans-serif;
   font-size: 1.5em;
@@ -136,11 +147,6 @@ a:link, a:visited {
   border-radius: 10%;
 }
 
-footer {
-  min-height: 50px;
-  align-content: flex-end;
-  margin-top: auto;
-}
 /* styles for modals */
 /* Modal background. full screen and darken content */
 .modal {
@@ -238,7 +244,7 @@ footer {
   }
   /* move modal contents up so they fit on the shorter screen */
   #modal-instructions > .modal-content {
-    top:-14%;
+    top: -14%;
   }
 }
 /* even smaller if screens are also not wide enough */
