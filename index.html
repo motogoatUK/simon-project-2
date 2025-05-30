@@ -51,11 +51,6 @@
                 <div class="card">14</div>
                 <div class="card">15</div>
                 <div class="card">16</div>
-                <!-- 2025-05-16 SDT added option for 4 more cards
-                <div class="card">17</div>
-                <div class="card">18</div>
-                <div class="card">19</div>
-                <div class="card">20</div> -->
             </div>
             <div id="score">
                 Current score:<span>0</span>
@@ -65,16 +60,15 @@
                 <button id="btn-start" class="btn-1 chango">Start</button>
             </div>
         </main>
-
         <footer>
             &copy;2025 S.D.Thornes
         </footer>
     </div>
     <!-- add notification div instead of using alerts -->
-    <div id="notification" role="dialog" class="chango">Press Start<br>&darr;
+    <div id="notification" role="dialog" aria-label="notification" class="chango">Press Start<br>&darr;
     </div>
     <!-- define modal divs -->
-    <div id="modal-instructions" role="dialog" class="modal">
+    <div id="modal-instructions" role="dialog" aria-label="Instructions" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Instructions</h2>
@@ -104,13 +98,14 @@
                 Hit the Start Button to begin and select your first card!</p>
         </div>
     </div>
-    <div id="modal-highscore" role="dialog" class="modal">
+    <div id="modal-highscore" role="dialog" aria-label="Highscore" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>High-score</h2>
             <p class="chango">0</p>
         </div>
     </div>
+    <!-- link to Javascript -->
     <script src="assets/js/script.js"></script>
 </body>
 
