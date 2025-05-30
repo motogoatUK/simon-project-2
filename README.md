@@ -126,12 +126,17 @@ Once deployed, the project was tested using various devices including a laptop a
 
 #### Code testing
 - HTML validator.w3.org - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)  
->Added missing ; and removed stray end tag - Passed!
+>Added missing ; and removed stray end tag - Passed!  
+
 >![w3c-html-pass](assets/readme-files/dc-p2-w3c-html-pass.png)  
 
 - CSS - jigsaw.w3.org - Passes CSS3, no errors.![w3c-css-pass](assets/readme-files/dc-p2-w3c-css-jigsaw-pass.png)
 -----
-- Javascript - JSHint - using a front end written during the course - 36 errors mainly unnecessary semicolons. Once these were removed 4 errors remained. ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
+- Javascript - JSHint - using a front end written during the course - 36 errors mainly unnecessary semicolons. Once these were removed 4 errors remained.  
+![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
+>Line 48 changed from:  
+    `addCardListeners() ? (game.inProgress = true) : console.error("card listener failed to start");`
+    removed ternary operator altogether and put the `game.inProgress = true` into the **try** block and the `console.error` into the **catch** block of the *addCardListeners* function.  
 
 >Line 188 changed from:  
     `game.cardsMatched.length === game.cards.length ? endGame(true) : hideFlipped();`  
@@ -141,44 +146,48 @@ Once deployed, the project was tested using various devices including a laptop a
     `} else {  `  
      `   hideFlipped();`  
     `}  `  
-    
+
 >Line 275 changed from:  
      `w ? notify("Well done!") : notify("Game Over!");`  
     to:  
     `const endMessage = w ? "Well done!" : "Game Over!";`  
     `notify(endMessage);`  
 
+>Line 224 code refactored to move setTimeout function to it's own function called `resetCard(element,num)` referencing lastCard & last.  
+![alt text](assets/readme-files/dc-p2-js-hint-pass.png)
+
+
 - Accessibility - https://wave.webaim.org/report#/https://motogoatuk.github.io/simon-project-2/index.html
 
 ----
 ### Bugs
 ##### 2025-05-15
-> Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.
+- > Using `.modal` and `.modal-content` classes for multiple modals would cause them to show at same time when adding `display:block` to the `.modal` class. However assigning `display:block` to the individual id's instead caused the modal overlay to remain in place when the modal content was subsequently hidden.
 >##### FIX:
 >With a bit of research on stackoverflow.com (and use of console.log messages), I gathered enough information to enable me to work out I needed to add event listeners to each close button and target the parents parent node to hide the modal. This is what I came up with:  
 `[...btnClose].forEach(element => {
     element.addEventListener("click", (e) => { e.target.parentNode.parentNode.style.display = 'none'; });  
 });`  
 ##### 2025-05-16
-> Game interface responds well to all different display widths, but only in portrait mode. when switching to landscape the game board can only display the first row / row and half  
+-  > Game interface responds well to all different display widths, but only in portrait mode. when switching to landscape the game board can only display the first row / row and half  
 >##### FIX:
 > ~~not fixed~~ 2025-05-26 - Added media queries for different heights of viewport on smaller screens.  
 ##### 2025-05-18
-> Clicking same card twice produces a match. Changed .onclick to addEventListeners but could not get removeEventListeners to work.
+- > Clicking same card twice produces a match. Changed .onclick to addEventListeners but could not get removeEventListeners to work.
 >##### FIX
 > Searching on stackoverflow.com I learned about the `{once: true}` property of addEventListener. I implemented it and it worked fantastically to prevent double clicking on the same card.
 ##### 2025-05-20
-> Clicking a third selection sometimes flips the card into play even though the code was written to ignore further selections.
+- > Clicking a third selection sometimes flips the card into play even though the code was written to ignore further selections.
 >##### FIX: 
 >This turned out to be due to timing of the check match function removing cards from the flippedArray before another delay to flip the cards back over. The reason the removeEventListeners didn't work was due to the eventListeners being set up with an anonymous function (as we were passing in the index as a variable). One possible solution mentioned by Robert Thompson from Dudley College was that I might set up a game variable that I could monitor when the matches were being checked. This was the route I took and set up a boolean `inProgress` that I could check before flipping a card and set to false within the match function and then set back to true in the delayed hideFlipped function calls. 
 ##### 2025-05-22
-> Using localStorage to save the highscore isn't working (it doesn't store it)
+- > Using localStorage to save the highscore isn't working (it doesn't store it)
 >code: `if (gameStorage) { localStorage.setItem("highScore", game.score)};` `gameStorage` is showing as `true` at that point in debugger.
 >##### FIX:
 >I read this on MDN web docs: "`Storage` only supports storing and retrieving strings. If you want to save other data types, you have to convert them to strings." On checking game.score is a number so the code is now: `if (gameStorage) { localStorage.setItem("highScore", game.score.toString())};`
 When that still didn't work, I looked at the code again and found I was setting it with **highScore** but when reading it I was using **highscore**! Set both to *highscore* and it works.
 ##### 2025-05-29
->Found while preparing responsive design screenshots. At certain screensizes the modal doesn't fully cover the full length of the screen, allowing the start button to be pressed, leaving the instructions on-screen.
+- >Found while preparing responsive design screenshots. At certain screensizes the modal doesn't fully cover the full length of the screen, allowing the start button to be pressed, leaving the instructions on-screen.
 ![screenshot of bug found](assets/readme-files/bug-2025-05-29.png)
 >##### FIX:
 >I discovered that moving the instructions up on smaller screens moved the entire modal. modified the code targeting `#modal-instructions` to `#modal-instructions > .modal-content` I couldn't just change it to `.modal-content` as this would have also affected the other modals.

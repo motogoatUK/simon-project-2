@@ -1,7 +1,7 @@
 /* MatchyMatchy
 Browser matching game
-By Simon Thornes 2025
-*/
+By Simon Thornes 2025 */
+
 // Define Constants
 const cardElements = document.getElementsByClassName("card");
 const modals = document.getElementsByClassName("modal");
@@ -31,14 +31,16 @@ const game = {
     cardsMatched: [],
     seenCards: []
 };
+
 /* get highScore from storage if available */
 if (gameStorage) {
     const highScore = localStorage.getItem("highscore");
     if (highScore !== null) { game.highScore = parseInt(highScore); }
 }
+
 modalHighscore.getElementsByTagName("p")[0].innerText = game.highScore; // set highScore in modal
 modalInstructions.style.display = "block"; // show Instructions
-//btnClose[0].focus(); // focus on close button so escape key works to close
+
 /* Set initial opacity on tabletop and display initial message */
 document.getElementById("table-top").style.opacity = 0.4;
 document.getElementById("notification").style.display = "block";
@@ -46,7 +48,7 @@ document.getElementById("notification").style.display = "block";
 /** *Initialises card deck then starts event listeners on the deck */
 function startGame() {
     initCards();
-    addCardListeners() ? (game.inProgress = true) : console.error("card listener failed to start");
+    addCardListeners();
     document.getElementById("score").style.display = "block";
     document.getElementById("table-top").style.opacity = 1;
     document.getElementById("notification").style.removeProperty("display");
@@ -75,7 +77,7 @@ function addButtonListeners() {
     });
     /* Also close modal if user clicks outside of content box */
     window.addEventListener("click", (e) => {
-         [...modals].forEach((modal) => {
+        [...modals].forEach((modal) => {
             if (e.target === modal) {
                 modal.style.display = 'none';
             }
@@ -88,7 +90,7 @@ function addButtonListeners() {
             modalHighscore.style.display = 'none';
         }
     });
- }
+}
 
 /** Add event handlers for card clicks using once property to prevent same card clicking */
 function addCardListeners() {
@@ -96,9 +98,9 @@ function addCardListeners() {
         [...cardElements].forEach((card, i) => {
             card.addEventListener("click", () => showCard(i), { once: true });
         });
-        return true;
+        game.inProgress = true;
     } catch (err) {
-        return false;
+        console.error("card listener failed to start");
     }
 }
 
@@ -228,11 +230,7 @@ function hideFlipped() {
             if (game.turn === "match") {
                 hideMatched(lastCard);
             } else {
-                setTimeout(() => {
-                    lastCard.innerHTML = parseInt(last) + 1; // add 1 as cards are numbered 1-16 and array is 0-15
-                    lastCard.classList.remove("revealed"); // remove revealed class
-                    lastCard.addEventListener("click", () => { showCard(last); }, { once: true });// add back the event listener
-                }, 1000);
+                resetCard(lastCard, last);
             }
         }
         // once loop has finished allow next selection
@@ -241,6 +239,14 @@ function hideFlipped() {
             game.turn = "";
         }, 1000);
     }
+}
+
+function resetCard(element, num) {
+    setTimeout(() => {
+        element.innerHTML = parseInt(num) + 1; // add 1 as cards are numbered 1-16 and array is 0-15
+        element.classList.remove("revealed"); // remove revealed class
+        element.addEventListener("click", () => { showCard(num); }, { once: true });// add back the event listener
+    }, 1000);
 }
 
 function hideMatched(element) {
