@@ -125,10 +125,12 @@ Once deployed, the project was tested using various devices including a laptop a
 | When the game is over, clicking any any remaing cards should have no effect | When the game is over it is not possible to select any remaining cards | Pass 
 
 #### Code testing
-- HTML validator.w3.org - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)  
+- HTML validator.w3.org - index.html - 2 errors ![w3c-html-error](assets/readme-files/dc-p2-w3c-html-fail.png)  
 >Added missing ; and removed stray end tag - Passed!  
 
 >![w3c-html-pass](assets/readme-files/dc-p2-w3c-html-pass.png)  
+
+- HTML validator.w3.org - 404.html - ![No errors or warnings to show](assets/readme-files/dc-p2-w3c-html-404-pass.png)
 
 - CSS - jigsaw.w3.org - Passes CSS3, no errors.![w3c-css-pass](assets/readme-files/dc-p2-w3c-css-jigsaw-pass.png)
 -----
@@ -154,11 +156,14 @@ Once deployed, the project was tested using various devices including a laptop a
     `notify(endMessage);`  
 
 >Line 224 code refactored to move setTimeout function to it's own function called `resetCard(element,num)` referencing lastCard & last.  
-![alt text](assets/readme-files/dc-p2-js-hint-pass.png)
+![jshint-pass](assets/readme-files/dc-p2-js-hint-pass.png)
 
 
-- Accessibility - https://wave.webaim.org/report#/https://motogoatuk.github.io/simon-project-2/index.html
+- Accessibility - https://wave.webaim.org/report#/https://motogoatuk.github.io/simon-project-2/index.html  
+![webaim report](assets/readme-files/dc-p2-wave.png)
 
+- Performance - https://lighthouse-metrics.com
+![lighthouse report](assets/readme-files/dc-p2-lighthouse.png)
 ----
 ### Bugs
 ##### 2025-05-15
