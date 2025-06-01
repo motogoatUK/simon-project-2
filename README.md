@@ -2,7 +2,15 @@
 # Matchy-Matchy
 A website written using HTML, CSS and Javascript. This website will run a pair matching game which I have called Matchy-Matchy. 
 
-Link to project board (Kanban): https://github.com/users/motogoatUK/projects/5
+Link to project board (Kanban): https://github.com/users/motogoatUK/projects/5   
+## Features
+The game features 16 cards with hidden images (8 different images). The idea of the game is to match each pair of images by revealing two cards at at time.  
+
+If an image is revealed and it is has already been seen, if it's not matched then that is a missed match and a life is lost. The game allows 6 missed matches (or lives). If you run out then the game is over.  
+The score is calculated on each match and is equal to how many allowed missed matches you have remaining (lives left). So, for instance, if you have have 4 lives remaining then you score 4 points for that match. This way it is possible to score anywhere between 1 and 48 points.
+
+See the [Deployed Project](#deployed-project) section for images of the finished project.
+
 ## User Experience (UX)
 
 ### Strategy
@@ -48,16 +56,17 @@ Main body / headings:| Rubik |![Rubik font](assets/readme-files/dc-p2-font-rubik
 Copy text:| Molengo |![Molengo font](assets/readme-files/dc-p2-font-molengo.png)  
 Impact / button text:| Chango |![Chango font](assets/readme-files/dc-p2-font-chango.png)  
 
-The colour palette was generated at hover.dev based on an initial colour of rebeccapurple.
+The colour palette was generated at [hover.dev](https://www.hover.dev/css-color-palette-generator) based on an initial colour of rebeccapurple.
 ![Colour palette](assets/readme-files/dc-p2-colours.png)
 
 ## Development
 - IDE: Visual Studio Code
 - local http server: Python
 - Browser and Developer tools: Firefox
-- Version control: Github
-- Project board: Github Kanban
-- Accessibility: WebAIM.org
+- Version control: [Github](https://github.com/motogoatUK/simon-project-2)
+- Project board: [Github Kanban](https://github.com/users/motogoatUK/projects/5)
+- Accessibility: [Wave at WebAIM.org](https://wave.webaim.org/)
+- Image compression: [TinyPNG](https://tinypng.com/)
 
 1. add basic HTML layout and styles
 1. add in colours from palette
@@ -104,18 +113,18 @@ Once deployed, the project was tested using various devices including a laptop a
 | Test | outcome | Pass/Fail | image |
 |---|---|---|---|
 |Instructions should be displayed when the app is loaded.| Instructions displayed on page load | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-01.png) 
-| clicking either the X of outside the instructions area should close the modal | modal closes in both circumstances | Pass
+| Clicking either the X of outside the instructions area should close the modal | Modal closes in both circumstances | Pass
 | It should be apparent that the Start button should be pressed.| Instructions mention this also there is an overlay showing where the start button is located and that it should be pressed | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-03.png) 
-| selecting any card before start is pressed should have no effect | clicking on the cards have no effect | Pass
-| clicking the "High Scores" button should open the Highscore modal | clicking the button opens the modal | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-05.png) |
-| when the user clicks Start the game should start accepting selections | Once start is clicked cards can be selected | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-07.png) 
-| when the start button is pressed it should become a reset game button | Start button shows as reset game after being pressed | Pass | as above |
-| when the reset game button is pressed the game should be reloaded | Pressing reset reloads the game to it's inital state | Pass
-| when a card is selected it should flip over to show the face | When a card is selected it reveals an image | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-09.png) 
-| once a second card is selected, trying to select a third card should display a message | Message displayed and card is not shown | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-10.png) 
-| showing 2 matching faces should increase the score | score increases when a match is made | Pass | shown below |
-| showing 2 matching faces should nofity the user of a match | "It's a Match!" is displayed | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-12.png) 
-| after a match both cards should disappear from the board | Cards disappear once matched | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-14.png) 
+| Selecting any card before start is pressed should have no effect | Clicking on the cards have no effect | Pass
+| Clicking the "High Scores" button should open the Highscore modal | Clicking the button opens the modal | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-05.png) |
+| When the user clicks Start the game should start accepting selections | Once start is clicked cards can be selected | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-07.png) 
+| When the start button is pressed it should become a reset game button | Start button shows as reset game after being pressed | Pass | as above |
+| When the reset game button is pressed the game should be reloaded | Pressing reset reloads the game to it's inital state | Pass
+| When a card is selected it should flip over to show the face | When a card is selected it reveals an image | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-09.png) 
+| Once a second card is selected, trying to select a third card should display a message | Message displayed and card is not shown | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-10.png) 
+| Showing 2 matching faces should increase the score | Score increases when a match is made | Pass | shown below |
+| Showing 2 matching faces should nofity the user of a match | "It's a Match!" is displayed | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-12.png) 
+| After a match both cards should disappear from the board | Cards disappear once matched | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-14.png) 
 | After a non-match both cards should flip back over and remain in play | Both cards turn back over and can be selected again | Pass
 | If a card that has previously been shown is not matched, message should be displayed and 1 life removed.| Message showing Missed match is dsplayed and chances remaining is also displayed | Pass  | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-16.png) 
 | If a missed match is shown 6 times the game should end immediately with a message shown | "Game Over" is displayed | Pass | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-17.png) |
@@ -220,18 +229,19 @@ The project can be worked on locally by cloning the repository
 5. Type _git clone_ then paste in the [repository URL] from step 2
 6. Press Enter
 
-## Deployed project
-![mock-up image of deployed project]()  
+## Deployed project 
+![mock-up image of deployed project](assets/readme-files/dc-p2-responsive-light.png)  
+(Image from https://ui.dev/amiresponsive)
 #### User story compliance
 | User story | proof |
 | :--- | --- |
-| - Visitor requires responsive layout | see responsive screenshots below
-| - Player wants a clean game interface | 
-| - Gamer wants to play the game | 
-| - Player wants to see high score | 
-| - Player would like to see varying images | for next release
-| - Gamer wants to personalise the game experience | for next release
-| - Gamer would like to see animations and/or sound | for a future release
+| - As a First-Time Visitor, I need a user-friendly design, including a responsive layout for my device, so I can efficiently view the website without frustration. | see responsive screenshots below
+| - As a Player, I want a clean interface so I can easily know how to play the game. | see images of deployed project above.
+| - As a game player I want to be able to play the game so that I can enjoy matching cards and improve my memory. | see images of deployed project above.  
+| - As a player I want to be able to see the highest score so that I can try to beat it. | ![highscore modal](assets/readme-files/dc-p2-ss-highscore.png)  
+| - As a player I would like to see varying images to match to make the game more exciting. | for next release
+| - As a gamer I want to be able to personalise my experience so that I can get greater enjoyment from the game. | for next release
+| - As a gamer I would like to see animations and hear sound so I can get full enjoyment from the game | for a future release
 
 #### Responsive screenshots
 | Device | portrait / normal | landscape / widescreen  
@@ -241,8 +251,9 @@ The project can be worked on locally by cloning the repository
 | Ipad | ![ipad](assets/readme-files/ss-ipad.png) | 
 | Laptop | ![laptop](assets/readme-files/ss-laptop-short.png) | ![laptop-wide](assets/readme-files/ss-laptop-wide.png)  
 | Desktop | ![desktop](assets/readme-files/ss-1920x1080.png) | ![desktop-wide](assets/readme-files/ss-widescreen.png) | 
-| Ultrawide | ![ultrawide](assets/readme-files/ss-ultrawide.png)
+| Ultrawide | ![ultrawide](assets/readme-files/ss-ultrawide.png)  
 
+[Back to top](#matchy-matchy)
 ## Credits
 https://www.hover.dev/css-color-palette-generator for the colour palette ideas  
 https://www.w3schools.com/ for help with localStorage (to save scores) among many other things  
