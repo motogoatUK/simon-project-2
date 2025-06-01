@@ -45,7 +45,7 @@ modalInstructions.style.display = "block"; // show Instructions
 document.getElementById("table-top").style.opacity = 0.4;
 document.getElementById("notification").style.display = "block";
 
-/** *Initialises card deck then starts event listeners on the deck */
+/** Initialises card deck then starts event listeners on the deck */
 function startGame() {
     initCards();
     addCardListeners();
@@ -194,6 +194,8 @@ function checkMatch() {
     } // matched cards will also be removed by hideFlipped function.
 }
 
+/** Checks if either selected card has been seen before,
+ * if so then displays lives remaining and checks for game over */
 function checkMissed(card0, card1) {
     let seenCards = game.seenCards;
     // .includes() is ES7 .find() is ES6
@@ -241,6 +243,7 @@ function hideFlipped() {
     }
 }
 
+/** hides displayed card and brings it back into play */
 function resetCard(element, num) {
     setTimeout(() => {
         element.innerHTML = parseInt(num) + 1; // add 1 as cards are numbered 1-16 and array is 0-15
@@ -249,11 +252,11 @@ function resetCard(element, num) {
     }, 1000);
 }
 
+/**  removes the matched card from the game board. */
 function hideMatched(element) {
-    // remove the matched card from the game board.
-    // display = "none" will remove the element from the page layout
-    // opacity:0 will keep the layout and make it invisible but not to screen readers
-    // visibility:hidden will hide the element and still keep it in the layout
+    /* display = "none" would remove the element from the page layout,
+    opacity:0 would keep the layout and make it invisible but not to screen readers
+    visibility:hidden will hide the element and still keep it in the layout */
     element.style.visibility = "hidden";
 }
 
@@ -289,6 +292,7 @@ function addScore(num) {
     document.querySelector("#score span").innerText = game.score;
 }
 
+/** diplays end game noftification and checks for new high score */
 function endGame(w) {
     const endMessage = w ? "Well done!" : "Game Over!";
     notify(endMessage);
