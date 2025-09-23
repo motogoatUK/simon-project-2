@@ -3,6 +3,12 @@
 A website written using HTML, CSS and Javascript. This website will run a pair matching game which I have called Matchy-Matchy. 
 
 Link to project board (Kanban): https://github.com/users/motogoatUK/projects/5   
+## Purpose
+The purpose of this web application (webapp) is to produce an application using custom HTML and CSS that uses Javascript to handle user interaction, display selected cards, check for matching pairs, keep score and be responsive in terms of layout.  
+
+It aims to be interactive, fun and also to aid memory retention.  
+Target audience - website visitors of all ages, gamers looking to achieve a high score  
+
 ## Features
 The game features 16 cards with hidden images (8 different images). The idea of the game is to match each pair of images by revealing two cards at at time.  
 
@@ -16,7 +22,7 @@ See the [Deployed Project](#deployed-project) section for images of the finished
 ### Strategy
 To create a memory game for casual gamers and other users to play and help improve memory skills. 
 #### User goals:
-The full user stories along with acceptance criteria and associated tasks can be found in this [project board](https://github.com/users/motogoatUK/projects/5) linked here and above.![Matchy Match project board](assets/readme-files/dc-p2-project-board.png) Below is a short summary of these goals:
+The full user stories along with acceptance criteria and associated tasks can be found in this [project board](https://github.com/users/motogoatUK/projects/5) linked here and above.[![Matchy Match project board](assets/readme-files/dc-p2-project-board.png)](https://github.com/users/motogoatUK/projects/5) Below is a short summary of these goals:
  - Visitor requires responsive layout
  - Player wants a clean game interface
  - Gamer wants to play the game
@@ -96,7 +102,7 @@ This project uses manual testing procedures only but automated testing is discus
 
 ### Manual Testing
 *Manual testing is used to evaluate the project and to find bugs and areas for improvement.*  
-This includes human interaction and visual checks. It test the application from a users perspective. 
+This includes human interaction and visual checks. It tests the application from a users perspective. 
 Testing during this application's development was done using Firefox Dev Tools in responsive design mode.
 The code was tested at each stage using Firefox with Dev tools including debugger.  
 
@@ -123,7 +129,7 @@ Once deployed, the project was tested using various devices including a laptop a
 | When a card is selected it should flip over to show the face | When a card is selected it reveals an image | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-09.png) 
 | Once a second card is selected, trying to select a third card should display a message | Message displayed and card is not shown | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-10.png) 
 | Showing 2 matching faces should increase the score | Score increases when a match is made | Pass | shown below |
-| Showing 2 matching faces should nofity the user of a match | "It's a Match!" is displayed | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-12.png) 
+| Showing 2 matching faces should nofity the user of a match | "That's a Match!" is displayed | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-12.png) 
 | After a match both cards should disappear from the board | Cards disappear once matched | Pass| ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-14.png) 
 | After a non-match both cards should flip back over and remain in play | Both cards turn back over and can be selected again | Pass
 | If a card that has previously been shown is not matched, message should be displayed and 1 life removed.| Message showing Missed match is dsplayed and chances remaining is also displayed | Pass  | ![Galaxy Z fold screenshot](assets/readme-files/screenshot-test-z-16.png) 
@@ -145,6 +151,8 @@ Once deployed, the project was tested using various devices including a laptop a
 -----
 - Javascript - JSHint - using a front end written during the course - 36 errors mainly unnecessary semicolons. Once these were removed 4 errors remained.  
 ![jshint-4-errors](assets/readme-files/dc-p2-jshint-errors.png)  
+>JSHint error fixes:  
+  
 >Line 48 changed from:  
     `addCardListeners() ? (game.inProgress = true) : console.error("card listener failed to start");`
     removed ternary operator altogether and put the `game.inProgress = true` into the **try** block and the `console.error` into the **catch** block of the *addCardListeners* function.  
@@ -158,13 +166,14 @@ Once deployed, the project was tested using various devices including a laptop a
      `   hideFlipped();`  
     `}  `  
 
+>Line 224 code refactored to move setTimeout function to it's own function called `resetCard(element,num)` referencing lastCard & last.  
+
 >Line 275 changed from:  
      `w ? notify("Well done!") : notify("Game Over!");`  
     to:  
     `const endMessage = w ? "Well done!" : "Game Over!";`  
     `notify(endMessage);`  
 
->Line 224 code refactored to move setTimeout function to it's own function called `resetCard(element,num)` referencing lastCard & last.  
 ![jshint-pass](assets/readme-files/dc-p2-js-hint-pass.png)
 
 
