@@ -237,7 +237,7 @@ footer {
   }
 }
 /* limit card sizes to fit on shorter screens */
-@media screen and (max-height: 890px) {
+@media screen and (max-height: 990px) {
   .card {
     max-width: 160px;
     max-height: 160px;
